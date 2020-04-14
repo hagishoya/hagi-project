@@ -5,7 +5,7 @@ from linebot.models import MessageEvent,TextMessage,TextSendMessage
 import os
 
 app=Flask(__name__)
-#環境変数の取得
+
 YOUR_CHANNEL_ACCESS_TOKEN="アクセストークンを入力"
 YOUR_CHANNEL_SECRET="Channel Secretを入力"
 line_bot_api=LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
