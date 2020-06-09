@@ -33,9 +33,7 @@ def handle_message(event):
                                 ]
                                )
 def handle_image(event):
-    line_bot_api.reply_message(event.reply_token,ImageSendMessage(url = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F61OidffpzNL.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.co.jp%2FBRUTUS-%25E3%2583%2596%25E3%2583%25AB%25E3%2583%25BC%25E3%2582%25BF%25E3%2582%25B9-2020%25E5%25B9%25B44-15%25E5%258F%25B7No-913-%25E7%258A%25AC%25E3%2581%258C%25E3%2581%2584%25E3%2581%25A6%25E3%2582%2588%25E3%2581%258B%25E3%2581%25A3%25E3%2581%259F%25E3%2580%2582%2Fdp%2FB085RQSYP3&tbnid=zLb7M0M3z3K6wM&vet=12ahUKEwiut5Ooy_PpAhUqEqYKHdpjDcYQMygAegUIARCfAg..i&docid=rFfgQ3trv06JMM&w=827&h=1118&q=%E7%8A%AC&ved=2ahUKEwiut5Ooy_PpAhUqEqYKHdpjDcYQMygAegUIARCfAg"))
-
-
+    line_bot_api.reply_message(event.reply_token,ImageSendMessage(url = "https://dol.ismcdn.jp/mwimgs/a/f/-/img_afa0fad37e6c4d5ce34c01faf54f9e79108563.jpg"))
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
     app.run(host="0.0.0.0",port=port)
