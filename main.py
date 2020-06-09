@@ -32,7 +32,7 @@ def handle_message(event):
                                    TextSendMessage(text="おつかれさまです。"),
                                 ]
                                )
-@handler.add(MessageEvent,message=ImageMessage)
+@handler.add1(MessageEvent,message=ImageMessage)
 def handle_image(event):
     line_bot_api.reply_message(event.reply_token,ImageSendMessage(
         original_content_url="https://www.min-petlife.com/data/article/239797/main_239797_cd32b_detail.jpg",
