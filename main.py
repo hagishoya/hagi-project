@@ -33,7 +33,10 @@ def handle_message(event):
                                 ]
                                )
 def handle_image(event):
-    line_bot_api.reply_message(event.reply_token,ImageSendMessage(url = "https://dol.ismcdn.jp/mwimgs/a/f/-/img_afa0fad37e6c4d5ce34c01faf54f9e79108563.jpg"))
+    line_bot_api.reply_message(event.reply_token,ImageSendMessage(
+        original_content_url="https://www.min-petlife.com/data/article/239797/main_239797_cd32b_detail.jpg",
+        preview_image_url="https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg"
+    ))
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
     app.run(host="0.0.0.0",port=port)
