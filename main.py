@@ -36,19 +36,14 @@ def handle_message(event):
                                )
 
 
-
 @handler.add(MessageEvent,message=ImageMessage)
-def make_picture():
-    messages = ImageSendMessage(
+def handle_image(event):
+    line_bot_api.reply_message(event.reply_token,ImageSendMessage(
         original_content_url="https://dol.ismcdn.jp/mwimgs/6/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg",
         preview_image_url="https://dol.ismcdn.jp/mwimgs/6/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg",
     )
-    return messages
+                               )
 
-
-def handle_image(event):
-    message = make_picture()
-    line_bot_api.reply_message(event.reply_token,message)
 
 if __name__=="__main__":
     port=int(os.getenv("PORT",4999))
