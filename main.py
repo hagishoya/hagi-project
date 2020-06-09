@@ -32,6 +32,8 @@ def handle_message(event):
                                    TextSendMessage(text="おつかれさまです。"),
                                ]
                                )
+
+
 @handler.add(MessageEvent,message=ImageMessage)
 def make_picture():
     messages = ImageSendMessage(
@@ -43,7 +45,9 @@ def make_picture():
 
 def handle_image(event):
     message = make_picture()
-    line_bot_api.reply_message(event.reply_token,message)
+    line_bot_api.reply_message(event.reply_token,message[0],message[1])
+
+
 
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
