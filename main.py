@@ -32,6 +32,9 @@ def handle_message(event):
                                    TextSendMessage(text="おつかれさまです。"),
                                 ]
                                )
+def handle_image(event):
+    line_bot_api.reply_message(event.reply_token(ImageSendMessage(url = "https://www.google.com/imgres?imgurl=https%3A%2F%2Frpr.c.yimg.jp%2Fim_siggRmI2JfzPQORn_cXk3z_VNQ---x800-n1%2Famd%2F20200320-00168403-roupeiro-000-12-view.jpg&imgrefurl=https%3A%2F%2Fnews.yahoo.co.jp%2Fbyline%2Fishiimasumi%2F20200320-00168403%2F&tbnid=pEBYBqREh6_erM&vet=12ahUKEwiZzKWuyfPpAhVGapQKHdckCGMQMygFegUIARCsAg..i&docid=qOuRNCxjMi8mkM&w=800&h=450&q=%E7%8A%AC&ved=2ahUKEwiZzKWuyfPpAhVGapQKHdckCGMQMygFegUIARCsAg")))
+
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
     app.run(host="0.0.0.0",port=port)
