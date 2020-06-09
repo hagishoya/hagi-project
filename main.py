@@ -24,14 +24,14 @@ def callback():
         abort(400)
     return "OK"
 
-@handler.add(MessageEvent,message=TextMessage)
-def handle_message(event):
-    line_bot_api.reply_message(event.reply_token,
-                               [
-                                   TextSendMessage(text=event.message.text),
-                                   TextSendMessage(text="おつかれさまです。"),
-                                ]
-                               )
+#@handler.add(MessageEvent,message=TextMessage)
+#def handle_message(event):
+#    line_bot_api.reply_message(event.reply_token,
+#                               [
+#                                   TextSendMessage(text=event.message.text),
+#                                   TextSendMessage(text="おつかれさまです。"),
+#                                ]
+#                               )
 @handler.add(MessageEvent,message=ImageMessage)
 def make_picture():
     messages = ImageSendMessage(
