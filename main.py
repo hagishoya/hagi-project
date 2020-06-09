@@ -11,6 +11,7 @@ YOUR_CHANNEL_SECRET="9f66f5b734e9db071bf0a5c535429bf4"
 line_bot_api=LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler=WebhookHandler(YOUR_CHANNEL_SECRET)
 
+
 @app.route("/callback",methods=["POST"])
 def callback():
     signature=request.headers["X-Line-Signature"]
@@ -23,6 +24,7 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return "OK"
+
 
 @handler.add(MessageEvent,message=TextMessage)
 def handle_message(event):
@@ -45,8 +47,7 @@ def make_picture():
 
 def handle_image(event):
     message = make_picture()
-    line_bot_api.reply_message(event.reply_token,message[0],message[1])
-
+    line_bot_api.reply_message(event.reply_token,message)
 
 
 if __name__=="__main__":
