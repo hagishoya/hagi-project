@@ -1,7 +1,7 @@
 from flask import Flask,request,abort
 from linebot import LineBotApi,WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent,TextMessage,TextSendMessage
+from linebot.models import MessageEvent,TextMessage,TextSendMessage,ImageSendMessage
 import os
 
 app=Flask(__name__)
@@ -33,7 +33,8 @@ def handle_message(event):
                                 ]
                                )
 def handle_image(event):
-    line_bot_api.reply_message(event.reply_token(ImageSendMessage(url = "https://www.google.com/imgres?imgurl=https%3A%2F%2Frpr.c.yimg.jp%2Fim_siggRmI2JfzPQORn_cXk3z_VNQ---x800-n1%2Famd%2F20200320-00168403-roupeiro-000-12-view.jpg&imgrefurl=https%3A%2F%2Fnews.yahoo.co.jp%2Fbyline%2Fishiimasumi%2F20200320-00168403%2F&tbnid=pEBYBqREh6_erM&vet=12ahUKEwiZzKWuyfPpAhVGapQKHdckCGMQMygFegUIARCsAg..i&docid=qOuRNCxjMi8mkM&w=800&h=450&q=%E7%8A%AC&ved=2ahUKEwiZzKWuyfPpAhVGapQKHdckCGMQMygFegUIARCsAg")))
+    line_bot_api.reply_message(event.reply_token,ImageSendMessage(url = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F61OidffpzNL.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.co.jp%2FBRUTUS-%25E3%2583%2596%25E3%2583%25AB%25E3%2583%25BC%25E3%2582%25BF%25E3%2582%25B9-2020%25E5%25B9%25B44-15%25E5%258F%25B7No-913-%25E7%258A%25AC%25E3%2581%258C%25E3%2581%2584%25E3%2581%25A6%25E3%2582%2588%25E3%2581%258B%25E3%2581%25A3%25E3%2581%259F%25E3%2580%2582%2Fdp%2FB085RQSYP3&tbnid=zLb7M0M3z3K6wM&vet=12ahUKEwiut5Ooy_PpAhUqEqYKHdpjDcYQMygAegUIARCfAg..i&docid=rFfgQ3trv06JMM&w=827&h=1118&q=%E7%8A%AC&ved=2ahUKEwiut5Ooy_PpAhUqEqYKHdpjDcYQMygAegUIARCfAg"))
+
 
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
