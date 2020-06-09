@@ -1,7 +1,7 @@
 from flask import Flask,request,abort
 from linebot import LineBotApi,WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent,TextMessage,TextSendMessage,ImageSendMessage
+from linebot.models import MessageEvent,TextMessage,TextSendMessage,ImageSendMessage,ImageMessage
 import os
 
 app=Flask(__name__)
@@ -32,6 +32,7 @@ def handle_message(event):
                                    TextSendMessage(text="おつかれさまです。"),
                                 ]
                                )
+@handler.add(MessageEvent,message=ImageMessage)
 def handle_image(event):
     line_bot_api.reply_message(event.reply_token,ImageSendMessage(
         original_content_url="https://www.min-petlife.com/data/article/239797/main_239797_cd32b_detail.jpg",
