@@ -32,12 +32,19 @@ def handle_message(event):
                                    TextSendMessage(text="おつかれさまです。"),
                                 ]
                                )
-@handler.add1(MessageEvent,message=ImageMessage)
+@handler.add(MessageEvent,message=ImageMessage)
+def make_picture():
+    messages = ImageSendMessage(
+        original_content_url="https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg",  # JPEG 最大画像サイズ：240×240 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
+        preview_image_url="https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg"  # JPEG 最大画像サイズ：1024×1024 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
+    )
+    return messages
+
+
 def handle_image(event):
-    line_bot_api.reply_message(event.reply_token,ImageSendMessage(
-        original_content_url="https://www.min-petlife.com/data/article/239797/main_239797_cd32b_detail.jpg",
-        preview_image_url="https://dol.ismcdn.jp/mwimgs/7/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg"
-    ))
+    message = make_picture()
+    line_bot_api.reply_message(event.reply_token,message)
+
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
     app.run(host="0.0.0.0",port=port)
