@@ -51,6 +51,7 @@ def handle_message(event):
 @handler.add(MessageEvent,message=ImageMessage)
 def handle_image_message(event):
     message_content = line_bot_api.get_message_content(event.message.id)
+    if()
     with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
         line_bot_api.reply_message(
@@ -59,7 +60,7 @@ def handle_image_message(event):
                 preview_image_url=FQDN +"/static/"+ event.message.id + ".jpg",
             )
         )
-
+    print(event.message.id)
 
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
