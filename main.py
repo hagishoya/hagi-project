@@ -56,7 +56,7 @@ def handle_image(event):
 #            original_content_url="https://project-hagi.herokuapp.com" + "/static/" + event.message.id + ".jpg",
 #            preview_image_url = "https://project-hagi.herokuapp.com" + "/static/" + event.message.id + ".jpg",
 #        )
-                                   )
+#                                   )
 
 
 if __name__=="__main__":
