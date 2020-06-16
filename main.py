@@ -2,7 +2,7 @@ from flask import Flask,request,abort
 from linebot import LineBotApi,WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent,TextMessage,TextSendMessage,ImageSendMessage,ImageMessage
-import os
+import os,pathlib
 
 app=Flask(__name__)
 
@@ -11,7 +11,9 @@ YOUR_CHANNEL_SECRET="9f66f5b734e9db071bf0a5c535429bf4"
 line_bot_api=LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler=WebhookHandler(YOUR_CHANNEL_SECRET)
 
+
 FQDN = "https://project-hagi.herokuapp.com"
+
 
 @app.route("/callback",methods=["POST"])
 def callback():
@@ -51,6 +53,8 @@ def handle_message(event):
 @handler.add(MessageEvent,message=ImageMessage)
 def handle_image_message(event):
     message_content = line_bot_api.get_message_content(event.message.id)
+    if not os.path.exists('static'):
+        os.mkdir('static/')
     with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
         line_bot_api.reply_message(
@@ -60,6 +64,7 @@ def handle_image_message(event):
             )
         )
     print(event.message.id)
+
 
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
