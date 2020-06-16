@@ -36,26 +36,26 @@ def handle_message(event):
                                )
 
 
-#@handler.add(MessageEvent,message=ImageMessage)
-#def handle_image(event):
-#    line_bot_api.reply_message(
-#        event.reply_token,ImageSendMessage(
-#        original_content_url="https://dol.ismcdn.jp/mwimgs/6/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg",
-#        preview_image_url="https://www.min-petlife.com/data/article/239797/main_239797_cd32b_detail.jpg",
-#        )
-#    )
-
-
 @handler.add(MessageEvent,message=ImageMessage)
-def handle_image_message(event):
-    message_content = line_bot_api.get_message_content(event.message.id)
-
-    with open("static/" + event.message.id + ".jpg", "wb") as f:
-        f.write(message_content.content)
-        line_bot_api.reply_message(event.reply_token,ImageSendMessage(
-            original_content_url="https://project-hagi.herokuapp.com" + "/static/" + event.message.id + ".jpg",
-            preview_image_url = "https://project-hagi.herokuapp.com" + "/static/" + event.message.id + ".jpg",
+def handle_image(event):
+    line_bot_api.reply_message(
+        event.reply_token,ImageSendMessage(
+        original_content_url="https://dol.ismcdn.jp/mwimgs/6/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg",
+        preview_image_url="https://www.min-petlife.com/data/article/239797/main_239797_cd32b_detail.jpg",
         )
+    )
+
+
+#@handler.add(MessageEvent,message=ImageMessage)
+#def handle_image_message(event):
+#    message_content = line_bot_api.get_message_content(event.message.id)
+#
+#    with open("static/" + event.message.id + ".jpg", "wb") as f:
+#        f.write(message_content.content)
+#        line_bot_api.reply_message(event.reply_token,ImageSendMessage(
+#            original_content_url="https://project-hagi.herokuapp.com" + "/static/" + event.message.id + ".jpg",
+#            preview_image_url = "https://project-hagi.herokuapp.com" + "/static/" + event.message.id + ".jpg",
+#        )
                                    )
 
 
