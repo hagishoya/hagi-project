@@ -11,6 +11,7 @@ YOUR_CHANNEL_SECRET="9f66f5b734e9db071bf0a5c535429bf4"
 line_bot_api=LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler=WebhookHandler(YOUR_CHANNEL_SECRET)
 
+FQDN = "https://project-hagi.herokuapp.com/"
 
 @app.route("/callback",methods=["POST"])
 def callback():
@@ -51,12 +52,12 @@ def handle_message(event):
 def handle_image_message(event):
     message_content = line_bot_api.get_message_content(event.message.id)
 
-    with open("/static/" + event.message.id + ".jpeg", "wb") as f:
+    with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
         line_bot_api.reply_message(
             event.reply_token,ImageSendMessage(
-            original_content_url="/static/" + event.message.id + ".jpeg",
-            preview_image_url="/static/" + event.message.id + ".jpeg"
+            original_content_url=FQDN + "/static/" + event.message.id + ".jpg",
+            preview_image_url=FQDN + "/static/" + event.message.id + ".jpg"
             )
         )
 
