@@ -32,6 +32,7 @@ def handle_message(event):
                                [
                                    TextSendMessage(text=event.message.text),
                                    TextSendMessage(text="おつかれさまです。"),
+                                   TextSendMessage(text=event.message.id),
                                ]
                                )
 
