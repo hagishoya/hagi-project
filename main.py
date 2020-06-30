@@ -3,6 +3,7 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, ImageMessage
 import os
+import cv2
 
 app=Flask(__name__)
 
@@ -14,12 +15,7 @@ handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 FQDN = "https://project-hagi.herokuapp.com"
 
 
-# 分類器ディレクトリ
-cascade_path = "./models/haarcascade_frontalface_default.xml"
-# 使用ファイルと入出力ディレクトリ
-image_file = event.message.id + ".jpg"
-image_path = "/static/" + image_file
-output_path = FQDN + "/static/" + image_file
+
 
 
 
@@ -65,7 +61,13 @@ def handle_message(event):
 
 
 @handler.add(MessageEvent,message=ImageMessage)
-def change_image():
+def change_image(event):
+    # 分類器ディレクトリ
+    cascade_path = "./models/haarcascade_frontalface_default.xml"
+    # 使用ファイルと入出力ディレクトリ
+    image_file = event.message.id + ".jpg"
+    image_path = "/static/" + image_file
+    output_path = FQDN + "/static/" + image_file
     # ファイル読み込み
     image = cv2.imread(image_path)
 
@@ -107,7 +109,7 @@ def handle_image_message(event):
         os.mkdir('static/')
     with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
-        change_image()
+        change_image(event)
         line_bot_api.reply_message(
             event.reply_token,ImageSendMessage(
                 original_content_url=FQDN + "/static/" + event.message.id + ".jpg",
