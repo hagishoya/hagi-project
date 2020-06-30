@@ -18,9 +18,9 @@ FQDN = "https://project-hagi.herokuapp.com"
 # 分類器ディレクトリ
 cascade_path = "./models/haarcascade_frontalface_default.xml"
 # 使用ファイルと入出力ディレクトリ
-image_file = event.message.id + ".jpg"
-image_path = FQDN + "/static/" + image_file
-output_path = FQDN + "/static/" + image_file
+"image_file = event.message.id + ".jpg"
+"image_path = FQDN + "/static/" + image_file
+"output_path = FQDN + "/static/" + image_file
 
 
 
