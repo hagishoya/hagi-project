@@ -49,8 +49,7 @@ def handle_message(event):
 #        )
 #    )
 
-
-
+@handler.add(MessageEvent, message=ImageMessage)
 def handle_image_message(event):
     message_content = line_bot_api.get_message_content(event.message.id)
     if not os.path.exists('static'):
