@@ -87,7 +87,7 @@ def change_image(event):
             cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=2)
 
 # 認識結果の保存
-        cv2.imwrite(output_path, image)
+    cv2.imwrite(output_path, image)
 
 
 def handle_image_message(event):
