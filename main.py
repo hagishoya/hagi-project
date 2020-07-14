@@ -72,11 +72,12 @@ def handle_image_message(event):
 def change_image(event):
     cascade_path = "haarcascade_frontalface_default.xml"
 
-    image_file = event.message.id + "_face.jpg"
-    print("イメージファイル: {}".format(image_file))
+    image_file = event.message.id + ".jpg"
+    save_file = event.message.id + "_face.jpg"
+    print("イメージファイル: {} // {}".format(image_file, save_file))
     image_path = "static/" + image_file
     print("イメージパス: {}".format(image_path))
-    output_path = FQDN + "/static/" + image_file
+    output_path = "static/" + save_file
     print("アウトプットパス: {}".format(output_path))
 
     # ファイル読み込み
