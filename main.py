@@ -72,7 +72,7 @@ def handle_image_message(event):
 def change_image(event):
     cascade_path = "haarcascade_frontalface_default.xml"
 
-    image_file = event.message.id + ".jpg"
+    image_file = event.message.id + "_face.jpg"
     print("イメージファイル: {}".format(image_file))
     image_path = "static/" + image_file
     print("イメージパス: {}".format(image_path))
