@@ -105,6 +105,7 @@ def handle_image_message(event):
                 preview_image_url=FQDN + "/static/" + event.message.id + ".jpg",
             )
         )
+    print("メッセージID")
     print(event.message.id)
     print(message_content.content)
 
