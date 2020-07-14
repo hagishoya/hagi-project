@@ -93,6 +93,8 @@ def change_image(event):
 
 
 def handle_image_message(event):
+    print("メッセージID")
+    print(event.message.id)
     message_content = line_bot_api.get_message_content(event.message.id)
     if not os.path.exists('static'):
         os.mkdir('static/')
@@ -105,8 +107,7 @@ def handle_image_message(event):
                 preview_image_url=FQDN + "/static/" + event.message.id + ".jpg",
             )
         )
-    print("メッセージID")
-    print(event.message.id)
+
     print(message_content.content)
 
 
