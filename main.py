@@ -96,7 +96,7 @@ def change_image(event):
     # flags – このパラメータは，新しいカスケードでは利用されません．古いカスケードに対しては，cvHaarDetectObjects 関数の場合と同じ意味を持ちます
     # minSize – 物体が取り得る最小サイズ．これよりも小さい物体は無視されます
     facerect = cascade.detectMultiScale(image_gray, scaleFactor=1.1, minNeighbors=2, minSize=(30, 30))
-
+    print("フェイスレクト:{}".format(facerect))
     # print(facerect)
     color = (255, 0, 0)  # 白
 
