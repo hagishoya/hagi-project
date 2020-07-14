@@ -57,10 +57,11 @@ def change_image(event):
     cascade_path = "haarcascade_frontalface_default.xml"
 # 使用ファイルと入出力ディレクトリ
     image_file = event.message.id + ".jpg"
-    image_path = FQDN + "/static/" + image_file
+    image_path = "static/" + image_file
     output_path = FQDN + "/static/" + image_file
 # ファイル読み込み
     image = cv2.imread(image_path)
+    print("image: {}".format(type(image)))
 
 # グレースケール変換
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
