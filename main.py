@@ -37,6 +37,7 @@ def handle_message(event):
                                    TextSendMessage(text=event.message.text),
                                    TextSendMessage(text="おつかれさまです。"),
                                    TextSendMessage(text=event.message.id),
+
                                ]
                                )
 
@@ -60,7 +61,8 @@ def change_image(event):
     output_path = FQDN + "/static/" + image_file
 # ファイル読み込み
     image = cv2.imread(image_path)
-    print(image)
+    cv2.imshow(image_path, image)
+
 # グレースケール変換
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
