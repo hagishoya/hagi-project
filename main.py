@@ -98,7 +98,7 @@ def change_image(event):
     facerect = cascade.detectMultiScale(image_gray, scaleFactor=1.1, minNeighbors=2, minSize=(30, 30))
 
     # print(facerect)
-    color = (255, 255, 255)  # 白
+    color = (255, 0, 0)  # 白
 
     # 検出した場合
     if len(facerect) > 0:
