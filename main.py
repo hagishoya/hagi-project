@@ -68,6 +68,7 @@ def handle_image_message(event):
             )
         )
 
+
 def change_image(event):
     cascade_path = "haarcascade_frontalface_default.xml"
 
@@ -108,7 +109,6 @@ def change_image(event):
 
         # 認識結果の保存
         cv2.imwrite(output_path, image)
-
 
 
 if __name__ == "__main__":
