@@ -100,7 +100,7 @@ def handle_image_message(event):
         os.mkdir('static/')
     with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
-        change_image(event)
+        #change_image(event)
         line_bot_api.reply_message(
             event.reply_token, ImageSendMessage(
                 original_content_url=FQDN + "/static/" + event.message.id + ".jpg",
