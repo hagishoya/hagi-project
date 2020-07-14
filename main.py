@@ -63,8 +63,8 @@ def handle_image_message(event):
         change_image(event)
         line_bot_api.reply_message(
             event.reply_token, ImageSendMessage(
-                original_content_url=FQDN + "/static/" + event.message.id + ".jpg",
-                preview_image_url=FQDN + "/static/" + event.message.id + ".jpg",
+                original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
+                preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
             )
         )
 
