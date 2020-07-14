@@ -60,7 +60,7 @@ def change_image(event):
     output_path = FQDN + "/static/" + image_file
 # ファイル読み込み
     image = cv2.imread(image_path)
-
+    print(image)
 # グレースケール変換
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
@@ -87,7 +87,7 @@ def change_image(event):
             cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=2)
 
 # 認識結果の保存
-    cv2.imwrite(output_path, image)
+        cv2.imwrite(output_path, image)
 
 
 def handle_image_message(event):
@@ -104,6 +104,7 @@ def handle_image_message(event):
             )
         )
     print(event.message.id)
+    print(message_content.content)
 
 
 if __name__ == "__main__":
