@@ -97,7 +97,8 @@ def change_image(event):
     # flags – このパラメータは，新しいカスケードでは利用されません．古いカスケードに対しては，cvHaarDetectObjects 関数の場合と同じ意味を持ちます
     # minSize – 物体が取り得る最小サイズ．これよりも小さい物体は無視されます
     facerect = cascade.detectMultiScale(image_gray, scaleFactor=1.1, minNeighbors=2, minSize=(30, 30))
-    print("フェイスレクト:{}".format(facerect))
+    eyerect = cascade_eye.detectMultiScale(image_gray, scaleFactor=1.1, minNeighbors=2, minSize=(20, 20))
+    print("レクト:{} // {}".format(facerect, eyerect))
     # print(facerect)
     color = (255, 0, 0)  # 白
 
@@ -107,11 +108,13 @@ def change_image(event):
         # 検出した顔を囲む矩形の作成
         for rect in facerect:
             cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=2)
-            eyerect = cascade_eye.detectMultiScale(image_gray, scaleFactor=1.1, minNeighbors=2, minSize=(20, 20))
-            for rect_eye in eyerect:
-                cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=2)
-        # 認識結果の保存
-        cv2.imwrite(output_path, image)
+    cv2.imwrite(output_path, image)
+    # 認識結果の保存
+
+    if len(eyerect) > 0:
+        for rect_eye in eyerect:
+            cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=2)
+    cv2.imwrite(output_path, image)
 
 
 if __name__ == "__main__":
