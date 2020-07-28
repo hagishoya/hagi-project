@@ -34,9 +34,9 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(event.reply_token,
                                [
-                                   TextSendMessage(text=event.message.text),
-                                   TextSendMessage(text="おつかれさまです。"),
-                                   TextSendMessage(text=event.message.id),
+                                   #TextSendMessage(text=event.message.text),
+                                   TextSendMessage(text="おつかれさまです。")
+                                   #TextSendMessage(text=event.message.id),
 
                                ]
                                )
@@ -51,7 +51,7 @@ def handle_message(event):
 #        )
 #    )
 
-@handler.add(MessageEvent, message=ImageMessage, message2=TextSendMessage)
+@handler.add(MessageEvent, message=ImageMessage)
 def handle_image_message(event):
     print("メッセージID")
     print(event.message.id)
@@ -69,13 +69,7 @@ def handle_image_message(event):
                 )
             )
         else:
-            line_bot_api.reply_message(event.reply_token,
-                [
-                    TextSendMessage(text="おつかれさまです。"),
-                    TextSendMessage(text=event.message.id),
-                ]
-            )
-            
+            handle_message(event)
 
 
 def change_image(event):
