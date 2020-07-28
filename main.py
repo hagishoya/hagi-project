@@ -127,7 +127,7 @@ def change_image(event):
 
     if len(eyerect) > 0:
         for rect_eye in eyerect:
-            cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=2)
+            cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=-1)
     else:
         return False
 
