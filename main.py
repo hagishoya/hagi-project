@@ -133,6 +133,8 @@ def change_image(event):
 
     cv2.imwrite(output_path, image)
 
+    
+
     return True
 
 
