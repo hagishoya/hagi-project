@@ -60,13 +60,21 @@ def handle_image_message(event):
         os.mkdir('static/')
     with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
-        change_image(event)
-        line_bot_api.reply_message(
-            event.reply_token, ImageSendMessage(
-                original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
-                preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
+        result = change_image(event)
+        if result:
+            line_bot_api.reply_message(
+                event.reply_token, ImageSendMessage(
+                    original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
+                    preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
+                )
             )
-        )
+        else:
+            line_bot_api.reply_message(
+                event.reply_token, ImageSendMessage(
+                    original_content_url=FQDN + "/static/" + event.message.id + ".jpg",
+                    preview_image_url=FQDN + "/static/" + event.message.id + ".jpg",
+                )
+            )
 
 
 def change_image(event):
@@ -108,13 +116,19 @@ def change_image(event):
         # 検出した顔を囲む矩形の作成
         for rect in facerect:
             cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=2)
+    else:
+        return False
     cv2.imwrite(output_path, image)
     # 認識結果の保存
 
     if len(eyerect) > 0:
         for rect_eye in eyerect:
             cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=2)
+    else:
+        return False
     cv2.imwrite(output_path, image)
+
+    return True
 
 
 if __name__ == "__main__":
