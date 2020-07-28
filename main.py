@@ -51,7 +51,7 @@ def handle_message(event):
 #        )
 #    )
 
-@handler.add(MessageEvent, message=ImageMessage)
+@handler.add(MessageEvent, message=ImageMessage, message2=TextSendMessage)
 def handle_image_message(event):
     print("メッセージID")
     print(event.message.id)
@@ -69,12 +69,13 @@ def handle_image_message(event):
                 )
             )
         else:
-            line_bot_api.reply_message(
-                event.reply_token, ImageSendMessage(
-                    original_content_url=FQDN + "/static/" + event.message.id + ".jpg",
-                    preview_image_url=FQDN + "/static/" + event.message.id + ".jpg",
-                )
+            line_bot_api.reply_message(event.reply_token,
+                [
+                    TextSendMessage(text="おつかれさまです。"),
+                    TextSendMessage(text=event.message.id),
+                ]
             )
+            
 
 
 def change_image(event):
