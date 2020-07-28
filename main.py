@@ -51,7 +51,7 @@ def handle_message(event):
 #        )
 #    )
 
-@handler.add(MessageEvent, message=ImageMessage, message=TextMessage)
+@handler.add(MessageEvent, message=ImageMessage)
 def handle_image_message(event):
     print("メッセージID")
     print(event.message.id)
