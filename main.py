@@ -33,11 +33,19 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     line_bot_api.reply_message(event.reply_token,
-                               [
-                                   #TextSendMessage(text=event.message.text),
-                                   TextSendMessage(text="おつかれさまです。")
-                                   #TextSendMessage(text=event.message.id),
+       [
+           #TextSendMessage(text=event.message.text),
+           TextSendMessage(text="顔、目を検知できませんでした。")
+           #TextSendMessage(text=event.message.id),
+       ]
+       )
 
+def handle_textmessage(event):
+    line_bot_api.reply_message(event.reply_token,
+                               [
+                                   TextSendMessage(text=event.message.text),
+                                   TextSendMessage(text="顔、目を検知できませんでした。"),
+                                   TextSendMessage(text=event.message.id),
                                ]
                                )
 
@@ -113,6 +121,7 @@ def change_image(event):
             cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=2)
     else:
         return False
+
     cv2.imwrite(output_path, image)
     # 認識結果の保存
 
@@ -121,6 +130,7 @@ def change_image(event):
             cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=2)
     else:
         return False
+
     cv2.imwrite(output_path, image)
 
     return True
