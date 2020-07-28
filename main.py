@@ -51,7 +51,7 @@ def handle_message(event):
 #        )
 #    )
 
-@handler.add(MessageEvent, message=ImageMessage)
+@handler.add(MessageEvent, message=ImageMessage, message=TextMessage)
 def handle_image_message(event):
     print("メッセージID")
     print(event.message.id)
@@ -71,7 +71,7 @@ def handle_image_message(event):
 
 def change_image(event):
     cascade_path = "haarcascade_frontalface_default.xml"
-
+    cascade_eye_path = "haarcascade_eye.xml"
     image_file = event.message.id + ".jpg"
     save_file = event.message.id + "_face.jpg"
     print("イメージファイル: {} // {}".format(image_file, save_file))
@@ -88,7 +88,7 @@ def change_image(event):
 
     # カスケード分類器の特徴量を取得する
     cascade = cv2.CascadeClassifier(cascade_path)
-
+    cascade_eye = cv2.CascadeClassifier(cascade_eye_path)
     # 物体認識（顔認識）の実行
     # image – CV_8U 型の行列．ここに格納されている画像中から物体が検出されます
     # objects – 矩形を要素とするベクトル．それぞれの矩形は，検出した物体を含みます
@@ -107,7 +107,9 @@ def change_image(event):
         # 検出した顔を囲む矩形の作成
         for rect in facerect:
             cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=2)
-
+            eyerect = cascade_eye.detectMultiScale(image_gray, scaleFactor=1.1, minNeighbors=2, minSize=(20, 20))
+            for rect_eye in eyerect:
+                cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=2)
         # 認識結果の保存
         cv2.imwrite(output_path, image)
 
