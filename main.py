@@ -70,7 +70,7 @@ def handle_image_message(event):
         f.write(message_content.content)
         result = change_image(event)
 
-        mozaiku(event)
+        #mozaiku(event)
 
         if result:
             line_bot_api.reply_message(
@@ -142,18 +142,19 @@ def change_image(event):
     return True
 
 
-def mozaiku(event):
-    img = cv2.imread("static/" + event.message.id + "_aface.jpg")  # 画像を読み出しオブジェクトimgに代入
-    print("img: {}".format(img))
-    # オブジェクトimgのshapeメソッドの1つ目の戻り値(画像の高さ)をimg_heightに、2つ目の戻り値(画像の幅)をimg_widthに代入
-    img_height, img_width = img.shape[:2]
+#def mozaiku(event):
+#    img = cv2.imread("static/" + event.message.id + "_face.jpg")  # 画像を読み出しオブジェクトimgに代入
+#    print("img: {}".format(img))
+#    # オブジェクトimgのshapeメソッドの1つ目の戻り値(画像の高さ)をimg_heightに、2つ目の戻り値(画像の幅)をimg_widthに代入
+#    img_height, img_width = img.shape[:2]
+#
+#    scale_factor = 0.1  # 縮小処理時の縮小率(小さいほどモザイクが大きくなる)
+#    img = cv2.resize(img, None, fx=scale_factor, fy=scale_factor)  # 縮小率の倍率で画像を縮小
+#    # 画像を元の画像サイズに拡大。ここで補完方法に'cv2.INTER_NEAREST'を指定することでモザイク状になる
+#    img = cv2.resize(img, (img_width, img_height), interpolation=cv2.INTER_NEAREST)
+#
+#    cv2.imwrite("static/" + event.message.id + "_face.jpg", img)  # ファイル名'mosaic.png'でimgを保存
 
-    scale_factor = 0.1  # 縮小処理時の縮小率(小さいほどモザイクが大きくなる)
-    img = cv2.resize(img, None, fx=scale_factor, fy=scale_factor)  # 縮小率の倍率で画像を縮小
-    # 画像を元の画像サイズに拡大。ここで補完方法に'cv2.INTER_NEAREST'を指定することでモザイク状になる
-    img = cv2.resize(img, (img_width, img_height), interpolation=cv2.INTER_NEAREST)
-
-    cv2.imwrite("static/" + event.message.id + "_face.jpg", img)  # ファイル名'mosaic.png'でimgを保存
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
