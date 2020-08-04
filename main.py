@@ -80,15 +80,15 @@ def handle_image_message(event):
 
         cv2.imwrite("/static/" + event.message.id + "_face.jpg", img)  # ファイル名'mosaic.png'でimgを保存
 
-        if result:
-            line_bot_api.reply_message(
-                event.reply_token, ImageSendMessage(
-                    original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
-                    preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
-                )
+
+        line_bot_api.reply_message(
+            event.reply_token, ImageSendMessage(
+                original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
+                preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
             )
-        else:
-            handle_message(event)
+        )
+
+        #handle_message(event)
 
 
 def change_image(event):
