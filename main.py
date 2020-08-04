@@ -70,7 +70,7 @@ def handle_image_message(event):
         f.write(message_content.content)
         result = change_image(event)
 
-        img = cv2.imread("static/" + event.message.id + "_face.jpg")  # 画像を読み出しオブジェクトimgに代入
+        img = cv2.imread("static/" + event.message.id + "_aface.jpg")  # 画像を読み出しオブジェクトimgに代入
         print("img: {}".format(img))
         # オブジェクトimgのshapeメソッドの1つ目の戻り値(画像の高さ)をimg_heightに、2つ目の戻り値(画像の幅)をimg_widthに代入
         img_height, img_width = img.shape[:2]
@@ -96,7 +96,7 @@ def change_image(event):
     cascade_path = "haarcascade_frontalface_default.xml"
     cascade_eye_path = "haarcascade_eye.xml"
     image_file = event.message.id + ".jpg"
-    save_file = event.message.id + "_face.jpg"
+    save_file = event.message.id + "_aface.jpg"
     print("イメージファイル: {} // {}".format(image_file, save_file))
     image_path = "static/" + image_file
     print("イメージパス: {}".format(image_path))
