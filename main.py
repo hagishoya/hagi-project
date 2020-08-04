@@ -69,6 +69,17 @@ def handle_image_message(event):
     with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
         result = change_image(event)
+
+        # オブジェクトimgのshapeメソッドの1つ目の戻り値(画像の高さ)をimg_heightに、2つ目の戻り値(画像の幅)をimg_widthに代入
+        img_height, img_width = result.shape[:2]
+
+        scale_factor = 0.05  # 縮小処理時の縮小率(小さいほどモザイクが大きくなる)
+        img = cv2.resize(result, None, fx=scale_factor, fy=scale_factor)  # 縮小率の倍率で画像を縮小
+        # 画像を元の画像サイズに拡大。ここで補完方法に'cv2.INTER_NEAREST'を指定することでモザイク状になる
+        img = cv2.resize(img, (img_width, img_height), interpolation=cv2.INTER_NEAREST)
+
+        cv2.imwrite("/static/" + event.message.id + "_face.jpg", img)  # ファイル名'mosaic.png'でimgを保存
+
         if result:
             line_bot_api.reply_message(
                 event.reply_token, ImageSendMessage(
@@ -114,28 +125,28 @@ def change_image(event):
     color = (255, 0, 0)  # 白
 
     # 検出した場合
-    if len(facerect) > 0:
+    #if len(facerect) > 0:
+#
+    #    # 検出した顔を囲む矩形の作成
+    #    for rect in facerect:
+    #        cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=2)
+    #        print(facerect)
+    #        print(rect)
+    #else:
+    #    return False
 
-        # 検出した顔を囲む矩形の作成
-        for rect in facerect:
-            cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=2)
-            print(facerect)
-            print(rect)
-    else:
-        return False
-
-    cv2.imwrite(output_path, image)
+    #cv2.imwrite(output_path, image)
     # 認識結果の保存
 
     if len(eyerect) > 0:
         for rect_eye in eyerect:
-            cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=-1)
+            cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=2)
     else:
         return False
 
     cv2.imwrite(output_path, image)
 
-    return True
+    return image
 
 
 if __name__ == "__main__":
