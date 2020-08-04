@@ -110,7 +110,7 @@ def change_image(event):
     facerect = cascade.detectMultiScale(image_gray, scaleFactor=1.1, minNeighbors=2, minSize=(30, 30))
     eyerect = cascade_eye.detectMultiScale(image_gray, scaleFactor=1.1, minNeighbors=2, minSize=(20, 20))
     print("レクト:{} // {}".format(facerect, eyerect))
-    # print(facerect)
+
     color = (255, 0, 0)  # 白
 
     # 検出した場合
@@ -119,6 +119,8 @@ def change_image(event):
         # 検出した顔を囲む矩形の作成
         for rect in facerect:
             cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=2)
+            print(facerect)
+            print(rect)
     else:
         return False
 
@@ -132,8 +134,6 @@ def change_image(event):
         return False
 
     cv2.imwrite(output_path, image)
-
-
 
     return True
 
