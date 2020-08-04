@@ -80,7 +80,7 @@ def handle_image_message(event):
         # 画像を元の画像サイズに拡大。ここで補完方法に'cv2.INTER_NEAREST'を指定することでモザイク状になる
         img = cv2.resize(img, (img_width, img_height), interpolation=cv2.INTER_NEAREST)
 
-        cv2.imwrite("/static/" + event.message.id + "_face.jpg", img)  # ファイル名'mosaic.png'でimgを保存
+        cv2.imwrite("static/" + event.message.id + "_face.jpg", img)  # ファイル名'mosaic.png'でimgを保存
 
         line_bot_api.reply_message(
             event.reply_token, ImageSendMessage(
