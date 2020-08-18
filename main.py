@@ -12,7 +12,6 @@ YOUR_CHANNEL_ACCESS_TOKEN = "rl1NmaTQR7jCWwiRmTGxq/6qVAB08MXr97h0a3FiTp4yo/yyPId
 YOUR_CHANNEL_SECRET = "9f66f5b734e9db071bf0a5c535429bf4"
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
-
 FQDN = "https://project-hagi.herokuapp.com"
 
 
@@ -40,6 +39,7 @@ def handle_message(event):
        ]
        )
 
+
 def handle_textmessage(event):
     line_bot_api.reply_message(event.reply_token,
                                [
@@ -49,7 +49,7 @@ def handle_textmessage(event):
                                ]
                                )
 
-
+#おうむ返しコード
 # @handler.add(MessageEvent,message=ImageMessage)
 # def handle_image(event):
 #    line_bot_api.reply_message(
@@ -58,6 +58,7 @@ def handle_textmessage(event):
 #        preview_image_url="https://www.min-petlife.com/data/article/239797/main_239797_cd32b_detail.jpg",
 #        )
 #    )
+
 
 @handler.add(MessageEvent, message=ImageMessage)
 def handle_image_message(event):
@@ -70,7 +71,7 @@ def handle_image_message(event):
         f.write(message_content.content)
         result = change_image(event)
 
-        #mozaiku(event)
+        mozaiku(event)
 
         if result:
             line_bot_api.reply_message(
@@ -83,6 +84,7 @@ def handle_image_message(event):
             handle_message(event)
 
 
+#囲う処理
 def change_image(event):
     cascade_path = "haarcascade_frontalface_default.xml"
     cascade_eye_path = "haarcascade_eye.xml"
@@ -133,7 +135,7 @@ def change_image(event):
     if len(eyerect) > 0:
         for rect_eye in eyerect:
             cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=1)
-            ############print("rect[0:2]: {}".rect_eye[0:2])
+            print("rect[0:2]: {}".rext_eye)
     else:
         return False
 
@@ -142,18 +144,19 @@ def change_image(event):
     return True
 
 
-#def mozaiku(event):
-#    img = cv2.imread("static/" + event.message.id + "_face.jpg")  # 画像を読み出しオブジェクトimgに代入
-#    print("img: {}".format(img))
-#    # オブジェクトimgのshapeメソッドの1つ目の戻り値(画像の高さ)をimg_heightに、2つ目の戻り値(画像の幅)をimg_widthに代入
-#    img_height, img_width = img.shape[:2]
-#
-#    scale_factor = 0.1  # 縮小処理時の縮小率(小さいほどモザイクが大きくなる)
-#    img = cv2.resize(img, None, fx=scale_factor, fy=scale_factor)  # 縮小率の倍率で画像を縮小
-#    # 画像を元の画像サイズに拡大。ここで補完方法に'cv2.INTER_NEAREST'を指定することでモザイク状になる
-#    img = cv2.resize(img, (img_width, img_height), interpolation=cv2.INTER_NEAREST)
-#
-#    cv2.imwrite("static/" + event.message.id + "_face.jpg", img)  # ファイル名'mosaic.png'でimgを保存
+#モザイク処理
+def mozaiku(event):
+    img = cv2.imread("static/" + event.message.id + "_face.jpg")  # 画像を読み出しオブジェクトimgに代入
+    print("img: {}".format(img))
+    # オブジェクトimgのshapeメソッドの1つ目の戻り値(画像の高さ)をimg_heightに、2つ目の戻り値(画像の幅)をimg_widthに代入
+    img_height, img_width = img.shape[:2]
+
+    scale_factor = 0.1  # 縮小処理時の縮小率(小さいほどモザイクが大きくなる)
+    img = cv2.resize(img, None, fx=scale_factor, fy=scale_factor)  # 縮小率の倍率で画像を縮小
+    # 画像を元の画像サイズに拡大。ここで補完方法に'cv2.INTER_NEAREST'を指定することでモザイク状になる
+    img = cv2.resize(img, (img_width, img_height), interpolation=cv2.INTER_NEAREST)
+
+    cv2.imwrite("static/" + event.message.id + "_face.jpg", img)  # ファイル名'mosaic.png'でimgを保存
 
 
 if __name__ == "__main__":

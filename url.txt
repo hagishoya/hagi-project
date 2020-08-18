@@ -1,0 +1,5 @@
+https://code-graffiti.com/drawing-images-with-opencv-in-python/
+https://qiita.com/hsgucci/items/5d4e4de933a14820795b
+http://bkmts.xsrv.jp/opencv-face/
+http://opencv.jp/opencv-2svn/cpp/geometric_image_transformations.html
+https://note.nkmk.me/python-tuple-operation/
