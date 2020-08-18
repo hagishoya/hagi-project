@@ -71,7 +71,7 @@ def handle_image_message(event):
         f.write(message_content.content)
         result = change_image(event)
 
-        mozaiku(event)
+        #mozaiku(event)
 
         if result:
             line_bot_api.reply_message(
