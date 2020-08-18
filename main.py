@@ -96,8 +96,7 @@ def change_image(event):
     print("イメージパス: {}".format(image_path))
     output_path = "static/" + save_file
     print("アウトプットパス: {}".format(output_path))
-    src = save_file
-    # ファイル読み込み
+    # ファイル読み込みo
     image = cv2.imread(image_path)
 
     # グレースケール変換
@@ -134,8 +133,8 @@ def change_image(event):
     if len(eyerect) > 0:
         for x, y, w, h in eyerect:  # 引数でeyesで取得した数分forループ
            # y:はHEIGHT、x:はWEIGHT  fxはxの縮小率、fyはyの縮小率
-           small = cv2.resize(src[y: y + h, x: x + w], None, fx=ratio, fy=ratio, interpolation=cv2.INTER_NEAREST)
-           src[y: y + h, x: x + w] = cv2.resize(small, (w, h), interpolation=cv2.INTER_NEAREST)
+           small = cv2.resize(image[y: y + h, x: x + w], None, fx=ratio, fy=ratio, interpolation=cv2.INTER_NEAREST)
+           image[y: y + h, x: x + w] = cv2.resize(small, (w, h), interpolation=cv2.INTER_NEAREST)
     else:
         bool = False
 
