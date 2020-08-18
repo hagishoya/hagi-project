@@ -71,6 +71,11 @@ def handle_image_message(event):
     with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
         result = change_image(event)
+    if not os.path.exists('static2'):
+        os.mkdir('static2/')
+    with open("static2/" + event.message.id + ".jpg", "wb") as f:
+        f.write(message_content.content)
+        result = change_image(event)
 
         #mozaiku(event)
 
@@ -83,8 +88,8 @@ def handle_image_message(event):
             )
             line_bot_api.reply_message(
                 event.reply_token, ImageSendMessage(
-                    original_content_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
-                    preview_image_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
+                    original_content_url=FQDN + "/static2/" + event.message.id + "_face2.jpg",
+                    preview_image_url=FQDN + "/static2/" + event.message.id + "_face2.jpg",
                 )
             )
         else:
@@ -101,12 +106,14 @@ def change_image(event):
     save_file2 = event.message.id + "_face2.jpg"
     print("イメージファイル: {} // {}".format(image_file, save_file))
     image_path = "static/" + image_file
+    image_path2 = "static/" + image_file
     print("イメージパス: {}".format(image_path))
     output_path = "static/" + save_file
     output_path2 = "static/" + save_file2
     print("アウトプットパス: {}".format(output_path))
     # ファイル読み込みo
     image = cv2.imread(image_path)
+    image = cv2.imread(image_path2)
 
     # グレースケール変換
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
