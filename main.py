@@ -35,6 +35,7 @@ def handle_message(event):
        [
            #TextSendMessage(text=event.message.text),
            TextSendMessage(text="おはよ------"),
+           TextSendMessage(text="顔、目を検知できませんでした。"),
            TextSendMessage(text=event.message.id),
        ]
        )
