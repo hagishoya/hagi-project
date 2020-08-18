@@ -80,6 +80,12 @@ def handle_image_message(event):
                     preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
                 )
             )
+            line_bot_api.reply_message(
+                event.reply_token, ImageSendMessage(
+                    original_content_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
+                    preview_image_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
+                )
+            )
         else:
             handle_message(event)
 
@@ -91,10 +97,12 @@ def change_image(event):
     cascade_eye_path = "haarcascade_eye.xml"
     image_file = event.message.id + ".jpg"
     save_file = event.message.id + "_face.jpg"
+    save_file2 = event.message.id + "_face2.jpg"
     print("イメージファイル: {} // {}".format(image_file, save_file))
     image_path = "static/" + image_file
     print("イメージパス: {}".format(image_path))
     output_path = "static/" + save_file
+    output_path2 = "static/" + save_file2
     print("アウトプットパス: {}".format(output_path))
     # ファイル読み込みo
     image = cv2.imread(image_path)
@@ -118,28 +126,35 @@ def change_image(event):
 
     color = (255, 0, 0)  # 青
 
-    # 検出した場合
-    if len(facerect) > 0:
-        # 検出した顔を囲む矩形の作成
-        for rect in facerect:
-            cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=1)
-            print(facerect)
-            print(rect)
-    else:
-        bool = False
+    ## 検出した場合
+    #if len(facerect) > 0:
+    #    # 検出した顔を囲む矩形の作成
+    #    for rect in facerect:
+    #        cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=1)
+    #        print(facerect)
+    #        print(rect)
+    #else:
+    #    bool = False
 
     ratio = 0.1  # 縮小処理時の縮小率(小さいほどモザイクが大きくなる)
     if len(eyerect) > 0:
+        for rect in eyerect:
+            cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=1)
+            print(eyerect)
+            print(rect)
+            cv2.imwrite(output_path, image)
+
         for x, y, w, h in eyerect:  # 引数でeyesで取得した数分forループ
            # y:はHEIGHT、x:はWEIGHT  fxはxの縮小率、fyはyの縮小率
            small = cv2.resize(image[y: y + h, x: x + w], None, fx=ratio, fy=ratio, interpolation=cv2.INTER_NEAREST)
            image[y: y + h, x: x + w] = cv2.resize(small, (w, h), interpolation=cv2.INTER_NEAREST)
+           cv2.imwrite(output_path2, image)
     else:
         bool = False
 
     if bool:
         # 認識結果の保存
-        cv2.imwrite(output_path, image)
+        #cv2.imwrite(output_path, image)
         return True
     else:
         return False
