@@ -120,7 +120,6 @@ def change_image(event):
 
     # 検出した場合
     if len(facerect) > 0:
-#
         # 検出した顔を囲む矩形の作成
         for rect in facerect:
             cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=1)
