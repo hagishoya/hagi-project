@@ -96,7 +96,7 @@ def change_image(event):
     print("イメージパス: {}".format(image_path))
     output_path = "static/" + save_file
     print("アウトプットパス: {}".format(output_path))
-    src = image_path
+    src = save_file
     # ファイル読み込み
     image = cv2.imread(image_path)
 
@@ -139,7 +139,7 @@ def change_image(event):
     else:
         bool = False
 
-    if bool == True:
+    if bool:
         # 認識結果の保存
         cv2.imwrite(output_path, image)
         return True
