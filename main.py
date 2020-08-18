@@ -86,6 +86,7 @@ def handle_image_message(event):
 
 #囲う処理
 def change_image(event):
+    bool = True
     cascade_path = "haarcascade_frontalface_default.xml"
     cascade_eye_path = "haarcascade_eye.xml"
     image_file = event.message.id + ".jpg"
@@ -119,15 +120,15 @@ def change_image(event):
     color = (255, 0, 0)  # 白
 
     # 検出した場合
-    #if len(facerect) > 0:
+    if len(facerect) > 0:
 #
-    #    # 検出した顔を囲む矩形の作成
-    #    for rect in facerect:
-    #        cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=1)
-    #        print(facerect)
-    #        print(rect)
-    #else:
-    #    return False
+        # 検出した顔を囲む矩形の作成
+        for rect in facerect:
+            cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=1)
+            print(facerect)
+            print(rect)
+    else:
+        bool = False
 
     #cv2.imwrite(output_path, image)
     # 認識結果の保存
@@ -135,13 +136,14 @@ def change_image(event):
     if len(eyerect) > 0:
         for rect_eye in eyerect:
             cv2.rectangle(image, tuple(rect_eye[0:2]), tuple(rect_eye[0:2] + rect_eye[2:4]), color, thickness=1)
-            #print("rect[0:2]: {}".rect_eye)
+    else:
+        bool = False
+
+    if bool == True:
+        cv2.imwrite(output_path, image)
+        return True
     else:
         return False
-
-    cv2.imwrite(output_path, image)
-
-    return True
 
 
 #モザイク処理
