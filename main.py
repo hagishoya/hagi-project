@@ -42,12 +42,12 @@ def handle_message(event):
 
 def handle_textmessage(event):
     line_bot_api.reply_message(event.reply_token,
-                               [
-                                   TextSendMessage(text=event.message.text),
-                                   TextSendMessage(text="顔、目を検知できませんでした。"),
-                                   TextSendMessage(text=event.message.id),
-                               ]
-                               )
+        [
+            TextSendMessage(text=event.message.text),
+            TextSendMessage(text="顔、目を検知できませんでした。"),
+            TextSendMessage(text=event.message.id),
+        ]
+        )
 
 #おうむ返しコード
 # @handler.add(MessageEvent,message=ImageMessage)
@@ -142,19 +142,20 @@ def change_image(event):
             cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=1)
             print(eyerect)
             print(rect)
-            cv2.imwrite(output_path, image)
+           
 
         for x, y, w, h in eyerect:  # 引数でeyesで取得した数分forループ
            # y:はHEIGHT、x:はWEIGHT  fxはxの縮小率、fyはyの縮小率
            small = cv2.resize(image[y: y + h, x: x + w], None, fx=ratio, fy=ratio, interpolation=cv2.INTER_NEAREST)
            image[y: y + h, x: x + w] = cv2.resize(small, (w, h), interpolation=cv2.INTER_NEAREST)
-           cv2.imwrite(output_path2, image)
+           
     else:
         bool = False
 
     if bool:
         # 認識結果の保存
-        #cv2.imwrite(output_path, image)
+        cv2.imwrite(output_path, image)
+        cv2.imwrite(output_path2, image)
         return True
     else:
         return False
