@@ -141,10 +141,10 @@ def change_image(event):
 
     ratio = 0.1  # 縮小処理時の縮小率(小さいほどモザイクが大きくなる)
     if len(eyerect) > 0:
-        for rect in eyerect:
-            cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=1)
-            print(eyerect)
-            print(rect)
+        # for rect in eyerect:
+        #     cv2.rectangle(image, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=1)
+        #     print(eyerect)
+        #     print(rect)
            
 
         for x, y, w, h in eyerect:  # 引数でeyesで取得した数分forループ
