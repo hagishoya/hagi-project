@@ -88,7 +88,7 @@ def handle_image_message(event):
                 )
             )
         else:
-            handle_message(event)
+            handle_textmessage(event)
 
 
 #囲う処理
