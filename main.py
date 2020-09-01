@@ -81,12 +81,12 @@ def handle_image_message(event):
                     preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
                 )
             )
-            line_bot_api.reply_message(
-                event.reply_token, ImageSendMessage(
-                    original_content_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
-                    preview_image_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
-                )
-            )
+           # line_bot_api.reply_message(
+           #     event.reply_token, ImageSendMessage(
+           #         original_content_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
+           #         preview_image_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
+           #     )
+           # )
         else:
             handle_textmessage(event)
 
@@ -99,12 +99,12 @@ def change_image(event):
 
     image_file = event.message.id + ".jpg"
     save_file = event.message.id + "_face.jpg"
-    save_file2 = event.message.id + "_face2.jpg"
+    #save_file2 = event.message.id + "_face2.jpg"
     print("イメージファイル: {} // {}".format(image_file, save_file))
     image_path = "static/" + image_file
     print("イメージパス: {}".format(image_path))
     output_path = "static/" + save_file
-    output_path2 = "static/" + save_file2
+    #output_path2 = "static/" + save_file2
     print("アウトプットパス: {}".format(output_path))
     # ファイル読み込みo
     image = cv2.imread(image_path)
@@ -158,7 +158,7 @@ def change_image(event):
     if bool:
         # 認識結果の保存
         cv2.imwrite(output_path, image)
-        cv2.imwrite(output_path2, image)
+        #cv2.imwrite(output_path2, image)
         return True
     else:
         return False
