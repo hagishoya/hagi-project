@@ -5,11 +5,7 @@
     "url": "https://amd.c.yimg.jp/im_siggkqogv0kjmxkZ6SV3PgVJRw---x480-y640-q90-exp3h-pril/amd/20200905-00000242-spnannex-000-7-view.jpg",
     "size": "full",
     "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "uri": "http://linecorp.com/"
-    }
+    "aspectMode": "cover"
   },
   "body": {
     "type": "box",
