@@ -80,6 +80,8 @@ def handle_image_message(event):
 
         #mozaiku(event)
 
+
+
     if result:
         line_bot_api.reply_message(
             event.reply_token, ImageSendMessage(
