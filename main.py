@@ -1,8 +1,8 @@
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, ImageMessage
-import json
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, ImageMessage, FlexSendMessage
+import hello
 import os
 import cv2
 
@@ -72,9 +72,16 @@ def handle_image_message(event):
     with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
     
-    json_open = open('hello.json', 'r')
-    json_load = json.load(json_open)
-    print(json_load)
+    #               json_open = open('hello.json', 'r')
+    #               json_load = json.load(json_open)
+    #               print(json_load)
+    #new_from_json_dictメソッドはJSONデータをFlexMessage等各種オブジェクトに変換してくれるメソッドです
+    #FlexSendMessage.new_from_json_dict(対象のJSONデータ）とすることで、
+    #FlexSendMessage型に変換されます
+    container_obj = FlexSendMessage.new_from_json_dict(hello.payload)
+
+    #最後に、push_messageメソッドを使ってPUSH送信する
+    line_bot_api.push_message('送りたい相手のUserID', messages=container_obj)
 
     result = change_image(event)
 
