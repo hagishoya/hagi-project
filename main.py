@@ -2,6 +2,7 @@ from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, ImageMessage
+import json
 import os
 import cv2
 
@@ -70,25 +71,30 @@ def handle_image_message(event):
         os.mkdir('static/')
     with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
-        result = change_image(event)
+    
+    json_open = open('hello.json', 'r')
+    json_load = json.load(json_open)
+    print(json_load)
+
+    result = change_image(event)
 
         #mozaiku(event)
 
-        if result:
-            line_bot_api.reply_message(
-                event.reply_token, ImageSendMessage(
-                    original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
-                    preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
-                )
+    if result:
+        line_bot_api.reply_message(
+            event.reply_token, ImageSendMessage(
+                original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
+                preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
             )
-           # line_bot_api.reply_message(
-           #     event.reply_token, ImageSendMessage(
-           #         original_content_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
-           #         preview_image_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
-           #     )
-           # )
-        else:
-            handle_textmessage(event)
+        )
+       # line_bot_api.reply_message(
+       #     event.reply_token, ImageSendMessage(
+       #         original_content_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
+       #         preview_image_url=FQDN + "/static/" + event.message.id + "_face2.jpg",
+       #     )
+       # )
+    else:
+        handle_textmessage(event)
 
 
 #囲う処理
