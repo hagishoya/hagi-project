@@ -107,13 +107,14 @@ def handle_image_message(event):
 
 def flex(event):
     json_open = open('hello.json', 'r')
-    line_bot_api.reply_message(
+    select__theme_massage = line_bot_api.reply_message(
         event.reply_token,
         FlexSendMessage(
-            alt_text="",
+            alt_text="flex",
             contents=BubbleContainer.new_from_json_dict(json.loads(json_open))
         )
     )
+    line_bot_api.push_message("U69acb65348d94ebce854dd5cb9bf4840", messages=select__theme_massage) 
 
 #囲う処理
 def change_image(event):
