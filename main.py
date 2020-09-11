@@ -50,6 +50,16 @@ def handle_textmessage(event):
             #TextSendMessage(text=event.message.id),
         ]
         )
+        
+def flex(event):
+    json_open = open('hello.json', 'r')
+    line_bot_api.reply_message(
+        event.reply_token,
+        FlexSendMessage(
+            alt_text="flex",
+            contents=BubbleContainer.new_from_json_dict(json.loads(json_open))
+        )
+    )
 
 #おうむ返しコード
 # @handler.add(MessageEvent,message=ImageMessage)
@@ -100,16 +110,7 @@ def handle_image_message(event):
     else:
         handle_textmessage(event)
 
-@handler.add(MessageEvent)
-def flex(event):
-    json_open = open('hello.json', 'r')
-    line_bot_api.reply_message(
-        event.reply_token,
-        FlexSendMessage(
-            alt_text="flex",
-            contents=BubbleContainer.new_from_json_dict(json.loads(json_open))
-        )
-    )
+
 
     #line_bot_api.push_message("U69acb65348d94ebce854dd5cb9bf4840", messages=select__theme_massage) 
 
