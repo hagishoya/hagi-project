@@ -109,7 +109,7 @@ def flex(event):
     x = open('hello.json', 'r')
     messages = json.loads(x)
     messages = FlexSendMessage(
-        alt_text="flex",
+        alt_text="hello",
         contents= messages
     )
     if event.reply_token == "ffffffffffffffffffffffffffffffff":
