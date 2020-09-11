@@ -59,8 +59,8 @@ def flex(event):
             FlexSendMessage(
             alt_text="flex",
             contents=BubbleContainer.new_from_json_dict(json.loads(json_open))
-        ]
         )
+        ]
     )
 
 #おうむ返しコード
