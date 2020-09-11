@@ -50,14 +50,16 @@ def handle_textmessage(event):
             #TextSendMessage(text=event.message.id),
         ]
         )
-        
+
 def flex(event):
     json_open = open('hello.json', 'r')
     line_bot_api.reply_message(
         event.reply_token,
-        FlexSendMessage(
+        [
+            FlexSendMessage(
             alt_text="flex",
             contents=BubbleContainer.new_from_json_dict(json.loads(json_open))
+        ]
         )
     )
 
