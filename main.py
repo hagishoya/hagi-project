@@ -110,6 +110,7 @@ def flex(event):
             contents=BubbleContainer.new_from_json_dict(json.loads(json_open))
         )
     )
+    
     #line_bot_api.push_message("U69acb65348d94ebce854dd5cb9bf4840", messages=select__theme_massage) 
 
 #囲う処理
