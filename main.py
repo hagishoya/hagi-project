@@ -117,6 +117,7 @@ def flex(event):
  
     if event.reply_token == "00000000000000000000000000000000":
         return
+        
     line_bot_api.push_message("U69acb65348d94ebce854dd5cb9bf4840", messages=select__theme_massage) 
 
 #囲う処理
