@@ -106,7 +106,6 @@ def flex(event):
     line_bot_api.reply_message(
         event.reply_token,
         FlexSendMessage(
-            alt_text="",
             alt_text="flex",
             contents=BubbleContainer.new_from_json_dict(json.loads(json_open))
         )
