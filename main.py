@@ -105,20 +105,6 @@ def handle_image_message(event):
     else:
         handle_textmessage(event)
 
-def flex(event):
-    x = open('hello.json', 'r')
-    messages = json.loads(x)
-    messages = FlexSendMessage(
-        alt_text="hello",
-        contents= messages
-    )
-    if event.reply_token == "ffffffffffffffffffffffffffffffff":
-        return
- 
-    if event.reply_token == "00000000000000000000000000000000":
-        return
-        
-    line_bot_api.push_message("U69acb65348d94ebce854dd5cb9bf4840", messages=messages) 
 
 #囲う処理
 def change_image(event):
@@ -206,6 +192,22 @@ def change_image(event):
 #    img = cv2.resize(img, (img_width, img_height), interpolation=cv2.INTER_NEAREST)
 
 #    cv2.imwrite("static/" + event.message.id + "_face.jpg", img)  # ファイル名'mosaic.png'でimgを保存
+
+def flex(event):
+    x = open('hello.json', 'r')
+    messages = json.loads(x)
+    messages = FlexSendMessage(
+        alt_text="hello",
+        contents= messages
+    )
+    if event.reply_token == "ffffffffffffffffffffffffffffffff":
+        return
+ 
+    if event.reply_token == "00000000000000000000000000000000":
+        return
+        
+    line_bot_api.push_message("U69acb65348d94ebce854dd5cb9bf4840", messages=messages) 
+
 
 
 if __name__ == "__main__":
