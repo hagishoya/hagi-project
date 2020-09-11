@@ -100,6 +100,18 @@ def handle_image_message(event):
     else:
         handle_textmessage(event)
 
+@handler.add(MessageEvent)
+def flex(event):
+    json_open = open('hello.json', 'r')
+    line_bot_api.reply_message(
+        event.reply_token,
+        FlexSendMessage(
+            alt_text="",
+            alt_text="flex",
+            contents=BubbleContainer.new_from_json_dict(json.loads(json_open))
+        )
+    )
+    #line_bot_api.push_message("U69acb65348d94ebce854dd5cb9bf4840", messages=select__theme_massage) 
 
 #囲う処理
 def change_image(event):
@@ -172,23 +184,6 @@ def change_image(event):
         return True
     else:
         return False
-
-
-def flex(event):
-    x = open('hello.json', 'r')
-    messages = json.loads(x)
-    messages = FlexSendMessage(
-        alt_text="hello",
-        contents= messages
-    )
-    if event.reply_token == "ffffffffffffffffffffffffffffffff":
-        return
- 
-    if event.reply_token == "00000000000000000000000000000000":
-        return
-        
-    line_bot_api.push_message("U69acb65348d94ebce854dd5cb9bf4840", messages=messages) 
-
 
 
 if __name__ == "__main__":
