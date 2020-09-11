@@ -1,8 +1,9 @@
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, ImageMessage, FlexSendMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, ImageMessage, FlexSendMessage,CarouselContainer
 import hello
+import json
 import os
 import cv2
 
@@ -78,11 +79,11 @@ def handle_image_message(event):
     #new_from_json_dictメソッドはJSONデータをFlexMessage等各種オブジェクトに変換してくれるメソッドです
     #FlexSendMessage.new_from_json_dict(対象のJSONデータ）とすることで、
     #FlexSendMessage型に変換されます
-    container_obj = FlexSendMessage.new_from_json_dict(hello.payload)
+    #container_obj = FlexSendMessage.new_from_json_dict(hello.payload)
 
     #最後に、push_messageメソッドを使ってPUSH送信する
-    line_bot_api.push_message('YOUR_CHANNEL_SECRET', messages=container_obj)
-
+    #line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=container_obj)
+    flex()
     result = change_image(event)
 
         #mozaiku(event)
@@ -105,6 +106,14 @@ def handle_image_message(event):
     else:
         handle_textmessage(event)
 
+def flex(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        FlexSendMessage(
+            alt_text="items",
+            contents=CarouselContainer.new_from_json_dict(json.loads(hello))
+        )
+    )
 
 #囲う処理
 def change_image(event):
