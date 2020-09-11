@@ -1,7 +1,7 @@
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, ImageMessage, FlexSendMessage,CarouselContainer
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, ImageMessage, FlexSendMessage,CarouselContainer,BubbleContainer
 import hello
 import json
 import os
@@ -111,7 +111,7 @@ def flex(event):
         event.reply_token,
         FlexSendMessage(
             alt_text="items",
-            contents=CarouselContainer.new_from_json_dict(json.loads(hello))
+            contents=BubbleContainer.new_from_json_dict(json.loads(hello))
         )
     )
 
