@@ -1,16 +1,18 @@
 {
   "type": "bubble",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Header text"
+      }
+    ]
+  },
   "hero": {
     "type": "image",
-    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
-    "size": "full",
-    "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "uri": "http://linecorp.com/"
-    },
-    "flex": 0
+    "url": "https://amd.c.yimg.jp/im_siggkqogv0kjmxkZ6SV3PgVJRw---x480-y640-q90-exp3h-pril/amd/20200905-00000242-spnannex-000-7-view.jpg"
   },
   "body": {
     "type": "box",
@@ -18,46 +20,21 @@
     "contents": [
       {
         "type": "text",
-        "text": "画像処理",
-        "weight": "bold",
-        "size": "xl",
-        "flex": 1
+        "text": "Body text"
       }
-    ],
-    "flex": 0
+    ]
   },
   "footer": {
     "type": "box",
     "layout": "vertical",
-    "spacing": "sm",
     "contents": [
       {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "message",
-          "label": "顔加工",
-          "text": "1"
-        },
-        "flex": 5
-      },
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "message",
-          "label": "髪加工",
-          "text": "2"
-        },
-        "flex": 5
-      },
-      {
-        "type": "spacer",
-        "size": "sm"
+        "type": "text",
+        "text": "Footer text"
       }
-    ],
-    "flex": 0
+    ]
+  },
+  "styles": {
+    "comment": "See the example of a bubble style object"
   }
 }
