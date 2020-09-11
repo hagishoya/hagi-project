@@ -3,7 +3,6 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, ImageMessage, FlexSendMessage,CarouselContainer,BubbleContainer
 import json
-import hello
 import os
 import cv2
 
@@ -107,11 +106,12 @@ def handle_image_message(event):
         handle_textmessage(event)
 
 def flex(event):
+    json_open = open('hello.json', 'r')
     line_bot_api.reply_message(
         event.reply_token,
         FlexSendMessage(
             alt_text="items",
-            contents=BubbleContainer.new_from_json_dict(json.loads(hello))
+            contents=BubbleContainer.new_from_json_dict(json.loads(json_open))
         )
     )
 
