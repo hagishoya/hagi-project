@@ -106,10 +106,11 @@ def handle_image_message(event):
         handle_textmessage(event)
 
 def flex(event):
-    json_open = open('hello.json', 'r')
+    message = open('hello.json', 'r')
+    message = json.loads(message)
     select__theme_massage = FlexSendMessage(
         alt_text="flex",
-        contents=json.loads(json_open)
+        contents= message
     )
     line_bot_api.push_message("U69acb65348d94ebce854dd5cb9bf4840", messages=select__theme_massage) 
 
