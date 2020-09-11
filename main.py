@@ -82,7 +82,7 @@ def handle_image_message(event):
 
     #最後に、push_messageメソッドを使ってPUSH送信する
     #line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=container_obj)
-    flex()
+    flex(event)
     result = change_image(event)
 
         #mozaiku(event)
