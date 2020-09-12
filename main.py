@@ -56,6 +56,7 @@ def flex(event):
     json_data = json.load(json_open)
     print("json_data: {}".format(json_data.get("hero").get("url")))
     #print(json_data.get("hero").get("url"))
+    #json_data["hero"]
     message = line_bot_api.reply_message(
         event.reply_token,
         [
