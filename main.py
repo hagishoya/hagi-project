@@ -80,7 +80,7 @@ def handle_image_message(event):
     flex(event)
     result = change_image(event)
 
-        #mozaiku(event)
+    #mozaiku(event)
 
 
 
