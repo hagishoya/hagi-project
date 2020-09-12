@@ -53,7 +53,7 @@ def handle_textmessage(event):
 
 def flex(event):
     json_open = open('hello.json', 'r')
-    line_bot_api.reply_message(
+    message = line_bot_api.reply_message(
         event.reply_token,
         [
             FlexSendMessage(
@@ -62,16 +62,8 @@ def flex(event):
         )
         ]
     )
+    line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=message)
 
-#おうむ返しコード
-# @handler.add(MessageEvent,message=ImageMessage)
-# def handle_image(event):
-#    line_bot_api.reply_message(
-#        event.reply_token,ImageSendMessage(
-#        original_content_url="https://dol.ismcdn.jp/mwimgs/6/1/670m/img_71c53c1d81500a1cf73a4f543e72413f27838.jpg",
-#        preview_image_url="https://www.min-petlife.com/data/article/239797/main_239797_cd32b_detail.jpg",
-#        )
-#    )
 
 
 @handler.add(MessageEvent, message=ImageMessage)
@@ -84,16 +76,7 @@ def handle_image_message(event):
     with open("static/" + event.message.id + ".jpg", "wb") as f:
         f.write(message_content.content)
     
-    #json_open = open('hello.json', 'r')
-    #json_load = json.load(json_open)
-    #print(json_load)
-    #new_from_json_dictメソッドはJSONデータをFlexMessage等各種オブジェクトに変換してくれるメソッドです
-    #FlexSendMessage.new_from_json_dict(対象のJSONデータ）とすることで、
-    #FlexSendMessage型に変換されます
-    #container_obj = FlexSendMessage.new_from_json_dict(hello.payload)
 
-    #最後に、push_messageメソッドを使ってPUSH送信する
-    #line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=container_obj)
     flex(event)
     result = change_image(event)
 
