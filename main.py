@@ -40,6 +40,7 @@ def handle_message(event):
            #TextSendMessage(text=event.message.id),
        ]
        )
+    print("取得イヴェントメッセージ:{}".format(event.message.id))
     if event.message.text == 1:
         print("通過: {}".format(event.message.text))
         handle_send_message(event)
