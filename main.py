@@ -42,14 +42,7 @@ def handle_message(event):
        )
 
 
-def handle_textmessage(event):
-    line_bot_api.reply_message(event.reply_token,
-        [
-            #TextSendMessage(text=event.message.text),
-            TextSendMessage(text="顔、目を検知できませんでした。"),
-            #TextSendMessage(text=event.message.id),
-        ]
-        )
+
 
 
 def flex(event):
@@ -68,8 +61,17 @@ def flex(event):
             )
         ]
     )
-    line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=message)
+    #line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=message)
 
+
+def handle_textmessage(event):
+    line_bot_api.reply_message(event.reply_token,
+        [
+            #TextSendMessage(text=event.message.text),
+            TextSendMessage(text="顔、目を検知できませんでした。"),
+            #TextSendMessage(text=event.message.id),
+        ]
+        )
 
 
 @handler.add(MessageEvent, message=ImageMessage)
@@ -83,11 +85,11 @@ def handle_image_message(event):
         f.write(message_content.content)
     
 
-    
+    flex(event)
 
     result = change_image(event)
 
-    flex(event)
+    
 
     #mozaiku(event)
 
