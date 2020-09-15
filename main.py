@@ -52,8 +52,8 @@ def text_save(work):
     path_w = 'save.txt'
     s = work
     print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD_text_save:{}".format(work))
-    with open(path_w, mode='wt') as f:
-        f.write(s)
+    with open(path_w, mode='w') as f:
+        f.write('\n'.join(s))
     with open(path_w) as f:
         print("セーブテキスト:{}".format(f.read()))
 
