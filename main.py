@@ -54,6 +54,7 @@ def handle_message(event):
 
 def flex(event):
     work = event
+    print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD:{}".format(work))
     json_open = open('hello.json', 'r')
     json_data = json.load(json_open)
     #print("json_data: {}".format(json_data.get("hero").get("url")))
