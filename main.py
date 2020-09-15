@@ -5,7 +5,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSend
 import json
 import os
 import cv2
-
+work = {}
 
 app = Flask(__name__)
 
@@ -42,9 +42,10 @@ def handle_message(event):
        )
     print("取得イヴェント:{}".format(event))
     print("取得イヴェントメッセージID:{}".format(event.message.id))
+    print("取得イヴェントメッセージID:{}".format(work.message.id))
     if event.message.text == "1":
         print("通過: {}".format(event.message.text))
-        handle_send_message(event)
+        handle_send_message(work)
 
 
 
