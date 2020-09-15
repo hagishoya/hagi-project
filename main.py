@@ -63,6 +63,8 @@ def flex(event):
     )
     if event.reply_token == "00000000000000000000000000000000":
         return
+    if event.reply_token == "ffffffffffffffffffffffffffffffff":
+        return
     #line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=message)
 
 
