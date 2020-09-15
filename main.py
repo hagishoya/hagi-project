@@ -34,7 +34,7 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(event.reply_token,
        [
-           TextSendMessage(text=event.message.text),
+           #TextSendMessage(text=event.message.text),コメント
            #TextSendMessage(text="おはよ------"),
            #TextSendMessage(text="顔、目を検知できませんでした。"),
            #TextSendMessage(text=event.message.id),
