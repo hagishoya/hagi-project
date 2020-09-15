@@ -88,7 +88,7 @@ def handle_image_message(event):
 
     #mozaiku(event)
 
-
+    print("チェンジイメージ通過")
 
     #if result:
     line_bot_api.reply_message(
