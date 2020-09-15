@@ -45,7 +45,9 @@ def handle_message(event):
     print("取得イヴェントメッセージID:{}".format(event.message.id))
     if event.message.text == "1":
         print("通過: {}".format(event.message.text))
-        handle_send_message2(work)
+        with open(path_w) as f:
+            work = f.read()
+            handle_send_message2(work)
 
 
 
