@@ -88,17 +88,16 @@ def handle_image_message(event):
 
     #mozaiku(event)
 
-    print(event.message.id)
-    #if result:
-    line_bot_api.reply_message(
-        event.reply_token, ImageSendMessage(
-            original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
-            preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
+    if result:
+        line_bot_api.reply_message(
+            event.reply_token, ImageSendMessage(
+                original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
+                preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
+            )
         )
-    )
 
-    #else:
-    #    handle_textmessage(event)
+    else:
+        handle_textmessage(event)
 
 
 
