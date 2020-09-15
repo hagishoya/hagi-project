@@ -51,6 +51,7 @@ def handle_message(event):
 def text_save(work):
     path_w = 'save.txt'
     s = work
+    print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD_text_save:{}".format(work))
     with open(path_w, mode='wt') as f:
         f.write(s)
     with open(path_w) as f:
