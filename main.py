@@ -52,16 +52,14 @@ def text_save(work):
     path_w = 'save.txt'
     s = work
     print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD_text_save:{}".format(work))
-    print("ーーーtype表示ーーー")
-    print(type(work))
-    # with open(path_w, mode='w') as f:
-    #     f.write('\n'.join(s))
-    # with open(path_w) as f:
-    #     print("セーブテキスト:{}".format(f.read()))
+    with open(path_w, mode='w') as f:
+        f.write(s)
+    with open(path_w) as f:
+        print("セーブテキスト:{}".format(f.read()))
 
 
 def flex(event):
-    work = event
+    work = event.message.id
     print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD:{}".format(work))
     text_save(work)
     json_open = open('hello.json', 'r')
