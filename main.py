@@ -44,6 +44,8 @@ def handle_message(event):
     print("取得イヴェント:{}".format(event))
     print("取得イヴェントメッセージID:{}".format(event.message.id))
     print("リプライトークン：{}".format(event.reply_token))
+    print("-------リプライトークン表示ーーーー")
+    print(type(event.reply_token))
     if event.message.text == "1":
         print("通過: {}".format(event.message.text))
         with open(path_w1) as f:
