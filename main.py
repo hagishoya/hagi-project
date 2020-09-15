@@ -51,6 +51,7 @@ def handle_textmessage(event):
         ]
         )
 
+
 def flex(event):
     json_open = open('hello.json', 'r')
     json_data = json.load(json_open)
@@ -64,10 +65,10 @@ def flex(event):
             alt_text="flex",
             contents=BubbleContainer.new_from_json_dict(json_data)
             #contents=BubbleContainer.new_from_json_dict(json.load(json_open))
-        )
+            )
         ]
     )
-    #line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=message)
+    line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=message)
 
 
 
@@ -86,7 +87,7 @@ def handle_image_message(event):
 
     result = change_image(event)
 
-    
+    flex(event)
 
     #mozaiku(event)
 
@@ -96,8 +97,7 @@ def handle_image_message(event):
                 original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
                 preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
             )
-        )
-        flex(event)
+            )
 
     else:
         handle_textmessage(event)
