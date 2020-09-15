@@ -67,8 +67,7 @@ def flex(event):
         )
         ]
     )
-    line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=message)
-    return
+    #line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=message)
 
 
 
