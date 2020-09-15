@@ -6,8 +6,8 @@ import json
 import os
 import cv2
 work = {}
-path_w = 'save.txt'
-
+path_w1 = 'saveid.txt'
+path_w2 = 'savereply.txt'
 app = Flask(__name__)
 
 YOUR_CHANNEL_ACCESS_TOKEN = "rl1NmaTQR7jCWwiRmTGxq/6qVAB08MXr97h0a3FiTp4yo/yyPIdBfDI2aDUEuoZOGDnIS5ujoAtsNG7eEW5V4QDgIQSuL892yo0vLbELt9OSliCUu0iJG4dqzRQwOtzxImdNfMAO+D8JWcxZS8fntgdB04t89/1O/w1cDnyilFU="
@@ -43,26 +43,36 @@ def handle_message(event):
        )
     print("取得イヴェント:{}".format(event))
     print("取得イヴェントメッセージID:{}".format(event.message.id))
+    print("リプライトークン：{}".format(event.reply_token))
     if event.message.text == "1":
         print("通過: {}".format(event.message.text))
-        with open(path_w) as f:
+        with open(path_w1) as f:
             work = f.read()
-            handle_send_message2(work)
+        with open(path_w2) as f2:
+            work1 = f2.read()
+        handle_send_message2(work,work1)
 
 
 
-def text_save(work):
+def text_save_id(work):
     s = work
-    print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD_text_save:{}".format(work))
-    with open(path_w, mode='w') as f:
+    print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD_text_saveID:{}".format(work))
+    with open(path_w1, mode='w') as f:
         f.write(s)
 
+def text_save_reply(work):
+    s = work
+    print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD_text_saveReply:{}".format(work))
+    with open(path_w2, mode='w') as f:
+        f.write(s)
 
 
 def flex(event):
     work = event.message.id
+    reply_work = event.reply_token
     print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD:{}".format(work))
-    text_save(work)
+    text_save_id(work)
+    text_save_reply(reply_work)
     json_open = open('hello.json', 'r')
     json_data = json.load(json_open)
     #print("json_data: {}".format(json_data.get("hero").get("url")))
@@ -132,7 +142,7 @@ def handle_send_message(event):
 
 
 #画像送信処理
-def handle_send_message2(event):
+def handle_send_message2(event,relpy):
     #mozaiku(event)
     result = change_image(event)
 
