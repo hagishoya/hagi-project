@@ -82,9 +82,11 @@ def handle_image_message(event):
         f.write(message_content.content)
     
 
-    flex(event)
+    
 
     result = change_image(event)
+
+    flex(event)
 
     #mozaiku(event)
 
