@@ -42,19 +42,25 @@ def handle_message(event):
        )
     print("取得イヴェント:{}".format(event))
     print("取得イヴェントメッセージID:{}".format(event.message.id))
-    print("取得イヴェントメッセージID:{}".format(work))
     if event.message.text == "1":
         print("通過: {}".format(event.message.text))
         handle_send_message(work)
 
 
 
-
+def text_save(work):
+    path_w = 'save.txt'
+    s = work
+    with open(path_w, mode='w') as f:
+        f.write(s)
+    with open(path_w) as f:
+        print("セーブテキスト:{}".format(f.read()))
 
 
 def flex(event):
     work = event
     print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD:{}".format(work))
+    text_save(work)
     json_open = open('hello.json', 'r')
     json_data = json.load(json_open)
     #print("json_data: {}".format(json_data.get("hero").get("url")))
