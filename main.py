@@ -6,6 +6,7 @@ import json
 import os
 import cv2
 work = {}
+path_w = 'save.txt'
 
 app = Flask(__name__)
 
@@ -44,18 +45,16 @@ def handle_message(event):
     print("取得イヴェントメッセージID:{}".format(event.message.id))
     if event.message.text == "1":
         print("通過: {}".format(event.message.text))
-        handle_send_message(work)
+        handle_send_message2(work)
 
 
 
 def text_save(work):
-    path_w = 'save.txt'
     s = work
     print("取得イヴェントメッセージIDDDDDDDDDDDDDDDD_text_save:{}".format(work))
     with open(path_w, mode='w') as f:
         f.write(s)
-    with open(path_w) as f:
-        print("セーブテキスト:{}".format(f.read()))
+
 
 
 def flex(event):
@@ -130,14 +129,31 @@ def handle_send_message(event):
         handle_textmessage(event)
 
 
+#画像送信処理
+def handle_send_message2(event):
+    #mozaiku(event)
+    result = change_image(event)
+
+    if result:
+        line_bot_api.reply_message(
+            event.reply_token, ImageSendMessage(
+                original_content_url=FQDN + "/static/" + event + "_face.jpg",
+                preview_image_url=FQDN + "/static/" + event + "_face.jpg",
+            )
+            )
+
+    else:
+        handle_textmessage(event)
+
+
 #囲う処理
 def change_image(event):
     bool = True
     cascade_path = "haarcascade_frontalface_default.xml"
     cascade_eye_path = "haarcascade_eye.xml"
 
-    image_file = event.message.id + ".jpg"
-    save_file = event.message.id + "_face.jpg"
+    image_file = event + ".jpg"
+    save_file = event + "_face.jpg"
     #save_file2 = event.message.id + "_face2.jpg"
     print("イメージファイル: {} // {}".format(image_file, save_file))
     image_path = "static/" + image_file
