@@ -54,7 +54,7 @@ def handle_textmessage(event):
 def flex(event):
     json_open = open('hello.json', 'r')
     json_data = json.load(json_open)
-    print("json_data: {}".format(json_data.get("hero").get("url")))
+    #print("json_data: {}".format(json_data.get("hero").get("url")))
     #print(json_data.get("hero").get("url"))
     #json_data["hero"]
     message = line_bot_api.reply_message(
@@ -68,6 +68,7 @@ def flex(event):
         ]
     )
     line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=message)
+    return
 
 
 
@@ -83,22 +84,23 @@ def handle_image_message(event):
     
 
     flex(event)
+
     result = change_image(event)
 
     #mozaiku(event)
 
 
 
-    if result:
-        line_bot_api.reply_message(
-            event.reply_token, ImageSendMessage(
-                original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
-                preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
-            )
+    #if result:
+    line_bot_api.reply_message(
+        event.reply_token, ImageSendMessage(
+            original_content_url=FQDN + "/static/" + event.message.id + "_face.jpg",
+            preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
         )
+    )
 
-    else:
-        handle_textmessage(event)
+    #else:
+    #    handle_textmessage(event)
 
 
 
