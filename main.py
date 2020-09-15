@@ -86,7 +86,7 @@ def handle_image_message(event):
 
     result = change_image(event)
 
-    flex(event)
+    
 
     #mozaiku(event)
 
@@ -97,6 +97,7 @@ def handle_image_message(event):
                 preview_image_url=FQDN + "/static/" + event.message.id + "_face.jpg",
             )
         )
+        flex(event)
 
     else:
         handle_textmessage(event)
