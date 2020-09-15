@@ -41,7 +41,7 @@ def handle_message(event):
        ]
        )
     print("取得イヴェントメッセージ:{}".format(event.message.id))
-    if event.message.text == 1:
+    if event.message.text == "1":
         print("通過: {}".format(event.message.text))
         handle_send_message(event)
 
