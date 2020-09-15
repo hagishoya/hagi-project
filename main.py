@@ -14,7 +14,7 @@ YOUR_CHANNEL_SECRET = "9f66f5b734e9db071bf0a5c535429bf4"
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 FQDN = "https://project-hagi.herokuapp.com"
-
+work = 0
 
 @app.route("/callback", methods=["POST"])
 def callback():
@@ -43,7 +43,7 @@ def handle_message(event):
     print("取得イヴェントメッセージ:{}".format(event.message.id))
     if event.message.text == "1":
         print("通過: {}".format(event.message.text))
-        handle_send_message(event)
+        handle_send_message(work)
 
 
 
@@ -51,6 +51,7 @@ def handle_message(event):
 
 
 def flex(event):
+    work = event
     json_open = open('hello.json', 'r')
     json_data = json.load(json_open)
     #print("json_data: {}".format(json_data.get("hero").get("url")))
