@@ -34,12 +34,14 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(event.reply_token,
        [
-           #TextSendMessage(text=event.message.text),コメント
+           TextSendMessage(text=event.message.text),
            #TextSendMessage(text="おはよ------"),
            #TextSendMessage(text="顔、目を検知できませんでした。"),
            #TextSendMessage(text=event.message.id),
        ]
        )
+    #if event.message.text == 1:
+
 
 
 
@@ -80,7 +82,7 @@ def handle_textmessage(event):
         ]
         )
 
-
+#画像受信後処理
 @handler.add(MessageEvent, message=ImageMessage)
 def handle_image_message(event):
     print("メッセージID")
