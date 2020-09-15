@@ -44,7 +44,7 @@ def handle_message(event):
     print("取得イヴェント:{}".format(event))
     print("取得イヴェントメッセージID:{}".format(event.message.id))
     print("リプライトークン：{}".format(event.reply_token))
-    print("-------リプライトークン表示ーーーー")
+        print("-------リプライトークン表示ーーーー")
     print(type(event.reply_token))
     if event.message.text == "1":
         print("通過: {}".format(event.message.text))
@@ -147,10 +147,10 @@ def handle_send_message(event):
 def handle_send_message2(event,relpy):
     #mozaiku(event)
     result = change_image(event)
-
+    reply = str(relpy)
     if result:
         line_bot_api.reply_message(
-            event.reply_token, ImageSendMessage(
+            reply, ImageSendMessage(
                 original_content_url=FQDN + "/static/" + event + "_face.jpg",
                 preview_image_url=FQDN + "/static/" + event + "_face.jpg",
             )
