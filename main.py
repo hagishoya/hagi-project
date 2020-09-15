@@ -51,7 +51,7 @@ def handle_message(event):
 def text_save(work):
     path_w = 'save.txt'
     s = work
-    with open(path_w, mode='w') as f:
+    with open(path_w, mode='wt') as f:
         f.write(s)
     with open(path_w) as f:
         print("セーブテキスト:{}".format(f.read()))
