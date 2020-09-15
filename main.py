@@ -40,7 +40,9 @@ def handle_message(event):
            #TextSendMessage(text=event.message.id),
        ]
        )
-    #if event.message.text == 1:
+    if event.message.text == 1:
+        print("通過: {}".format(event.message.text))
+        handle_send_message(event)
 
 
 
@@ -96,11 +98,13 @@ def handle_image_message(event):
 
     flex(event)
 
-    result = change_image(event)
-
     
 
+    
+#画像送信処理
+def handle_send_message(event):
     #mozaiku(event)
+    result = change_image(event)
 
     if result:
         line_bot_api.reply_message(
