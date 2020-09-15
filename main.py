@@ -60,8 +60,9 @@ def flex(event):
     #        )
     #    ]
     #)
-    messages = FlexSendMessage(alt_text="test", contents=json_data)
 
+    messages = FlexSendMessage(alt_text="test", contents=json_data)
+    print("フレックスメッセージ中身: {}".format(messages))
     if event.reply_token == "00000000000000000000000000000000":
         return
     if event.reply_token == "ffffffffffffffffffffffffffffffff":
@@ -110,9 +111,6 @@ def handle_image_message(event):
     else:
         handle_textmessage(event)
 
-
-
-    #line_bot_api.push_message("U69acb65348d94ebce854dd5cb9bf4840", messages=select__theme_massage) 
 
 #囲う処理
 def change_image(event):
