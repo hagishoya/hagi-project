@@ -10,11 +10,11 @@ path_w1 = 'saveid.txt'
 path_w2 = 'savereply.txt'
 app = Flask(__name__)
 
-YOUR_CHANNEL_ACCESS_TOKEN = "rl1NmaTQR7jCWwiRmTGxq/6qVAB08MXr97h0a3FiTp4yo/yyPIdBfDI2aDUEuoZOGDnIS5ujoAtsNG7eEW5V4QDgIQSuL892yo0vLbELt9OSliCUu0iJG4dqzRQwOtzxImdNfMAO+D8JWcxZS8fntgdB04t89/1O/w1cDnyilFU="
-YOUR_CHANNEL_SECRET = "9f66f5b734e9db071bf0a5c535429bf4"
+YOUR_CHANNEL_ACCESS_TOKEN = ""
+YOUR_CHANNEL_SECRET = ""
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
-FQDN = "https://project-hagi.herokuapp.com"
+FQDN = ""
 
 
 @app.route("/callback", methods=["POST"])
@@ -97,7 +97,8 @@ def flex(event):
     if event.reply_token == "ffffffffffffffffffffffffffffffff":
         return
         
-    line_bot_api.push_message('U69acb65348d94ebce854dd5cb9bf4840', messages=messages)
+    message_id = ''
+    line_bot_api.push_message(message_id, messages=messages)
 
 
 def handle_textmessage(event):
