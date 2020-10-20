@@ -24,7 +24,7 @@ def handle_send_message(event,relpy):
     main.line_bot_api.reply_message(
         reply, ImageSendMessage(
             original_content_url=main.FQDN + "/static/" + event + "_face.jpg",
-            preview_image_url=main.FQDN + "/static/" + event + "_face.jpg",
+            preview_image_url=main.FQDN + "/static/" + event + "_face.jpg"
         )
         )
     # else:
