@@ -21,7 +21,7 @@ YOUR_CHANNEL_ACCESS_TOKEN = os.environ['YOUR_CHANNEL_ACCESS_TOKEN']
 YOUR_CHANNEL_SECRET = os.environ['YOUR_CHANNEL_SECRET']
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
-FQDN = " https://hagi-project.herokuapp.com"
+FQDN = "https://hagi-project.herokuapp.com"
 cascade_path = "haarcascade_frontalface_default.xml"
 cascade_eye_path = "haarcascade_eye.xml"
 
@@ -58,7 +58,7 @@ def handle_message(event):
         with open(path_w2) as f2:
             work1 = f2.read()
         #line_bot_api.reply_message(event.reply_token,[TextSendMessage(text="目のモザイク処理をしています..."),])
-        output_method.handle_send_message(work,work1)
+        output_method.handle_send_message(work,event.reply_token)
 
     #線画
     elif event.message.text == ">>線画風":
