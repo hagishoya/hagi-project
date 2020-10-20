@@ -20,6 +20,7 @@ FQDN = os.environ['FQDN']
 
 @app.route("/callback", methods=["POST"])
 def callback():
+    print(FQDN)
     signature = request.headers["X-Line-Signature"]
 
     body = request.get_data(as_text=True)
