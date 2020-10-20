@@ -99,6 +99,7 @@ def flex(event):
     if event.reply_token == "ffffffffffffffffffffffffffffffff":
         return
     user_id = os.environ['user_id']
+    
     line_bot_api.push_message(user_id, messages=messages)
 
 
