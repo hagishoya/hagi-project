@@ -19,6 +19,8 @@ def handle_send_message(event,relpy):
     result = mosic_change.mosic_image(event)
     reply = str(relpy)
     print("ここも通過したじょ")
+    print("event:{}".format(event))
+    print("reply:{}".format(reply))
     main.line_bot_api.reply_message(
         reply, ImageSendMessage(
             original_content_url=main.FQDN + "/static/" + event + "_face.jpg",
