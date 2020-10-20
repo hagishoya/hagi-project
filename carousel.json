@@ -1,0 +1,145 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+        "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "url": "https://ggo.ismcdn.jp/mwimgs/8/6/-/img_864fe01106d99315535924b60c6764ad707281.jpg"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "おめめモザイク",
+            "wrap": true,
+            "align": "center",
+            "position": "relative",
+            "size": "md"
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "message",
+              "label": "変更",
+              "text": ">>おめめモザイク"
+            },
+            "position": "relative"
+          }
+        ]
+      }
+    },
+    {
+         "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "url": "https://lh3.googleusercontent.com/-MXvh-To3gJunldCgWen7RkYwqDXRmkJEpKv3cDhi56cqKvtfQ0Np6ReXqd3qiWRHT47ql3pZj42i9WPl1kneqJpK_aRJZvT-Ohqspl3i6hq58ZOnP-bmqW6TwMEEOe0G_UHcY_IjyZqtW9viRFbvaNMm9OwLjCLq37WCiO0n5FbYtKdhj-G6BSIMvhfzEJ2uKlUqmZ4aNMR6KWcFCiFNiEi0fqzAY6TA_av1l_K-YTMjncm3nAAR8Rcp2yffidibAzY20Gv6CgCmkT0VUdcdjc5lT-Haqx9PREZs2brwO3_xjzYoofTAs3j-bsU-Wsp3kjNvkVLgz9qPplRrfeIPm2nH1lGN6tS_9STsq1ouN_0l5ZuVyJZqx_SRmvnKDjYZZp2a3SScs8UWo4TfGK96-LGVKCxlhNjRtXaMSkAgDAxtdscvOXJko6F1P_KVooF8U4I_MkJAHTIcCNN9gnbTcpdkH0DEvl_NvYoHHBuLwxmhYO4oSWZyVyxWkbg4y4UncHf6_06BGA9K93XmfLBFp0tR1668Xfk6uYtn4V97UDpS0Rb8UXhmrpDmuizkR1XLkv8VIvRWu82eWow4mooQBlVPFUT3gZI16xmHBv4XiKySKgUSnWzdUfb4Dr3nNizF3QpR62nG_2c6ZsPola-E-2zV6cGOisAc5Hmb_EvBq-o6bBCQMOW6xlWShNb=w700-h842-no?authuser=0"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "線画風",
+            "wrap": true,
+            "align": "center",
+            "position": "relative",
+            "size": "md"
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "message",
+              "label": "変更",
+              "text": ">>線画風"
+            },
+            "position": "relative"
+          }
+        ]
+      }
+    },
+    {
+         "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "url": "https://raw.githubusercontent.com/nishizumi-lab/sample/master/python/opencv/anime_picture/anime.jpg"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "イラスト風",
+            "wrap": true,
+            "align": "center",
+            "position": "relative",
+            "size": "md"
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "message",
+              "label": "変更",
+              "text": ">>イラスト風"
+            },
+            "position": "relative"
+          }
+        ]
+      } 
+    },
+    {
+          "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "url": "https://raw.githubusercontent.com/nishizumi-lab/sample/master/python/opencv/pixel_art/pixel_art1_2.png"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ドット絵風",
+            "wrap": true,
+            "align": "center",
+            "position": "relative",
+            "size": "md"
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "message",
+              "label": "変更",
+              "text": ">>ドット絵風"
+            },
+            "position": "relative"
+          }
+        ]
+      }
+    }
+  ]
+}
