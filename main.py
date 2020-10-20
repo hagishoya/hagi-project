@@ -21,7 +21,7 @@ YOUR_CHANNEL_ACCESS_TOKEN = os.environ['YOUR_CHANNEL_ACCESS_TOKEN']
 YOUR_CHANNEL_SECRET = os.environ['YOUR_CHANNEL_SECRET']
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
-FQDN = "https://hagi-project.herokuapp.com"
+FQDN = "https://project-hagi.herokuapp.com"
 cascade_path = "haarcascade_frontalface_default.xml"
 cascade_eye_path = "haarcascade_eye.xml"
 
