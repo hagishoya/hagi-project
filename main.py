@@ -98,8 +98,8 @@ def flex(event):
         return
     if event.reply_token == "ffffffffffffffffffffffffffffffff":
         return
-        
-    line_bot_api.push_message(reply_work, messages=messages)
+    user_id = os.environ['user_id']
+    line_bot_api.push_message(user_id, messages=messages)
 
 
 def handle_textmessage(event):
