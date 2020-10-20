@@ -15,7 +15,6 @@ YOUR_CHANNEL_ACCESS_TOKEN = os.environ['YOUR_CHANNEL_ACCESS_TOKEN']
 YOUR_CHANNEL_SECRET = os.environ['YOUR_CHANNEL_SECRET']
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
-# FQDN = os.environ['FQDN']
 user_id = os.environ['USER_ID']
 FQDN = "https://project-hagi.herokuapp.com"
 
@@ -100,7 +99,7 @@ def flex(event):
     if event.reply_token == "ffffffffffffffffffffffffffffffff":
         return
     
-    print(user_id)
+    print("userID:{}".format(user_id))
     line_bot_api.push_message(user_id, messages=messages)
 
 
