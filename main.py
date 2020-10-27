@@ -89,9 +89,13 @@ def handle_message(event):
             work1 = f2.read()
         #line_bot_api.reply_message(event.reply_token,[TextSendMessage(text="ドット絵風に変更しています..."),])
         output_method.handle_send_message4(work,event.reply_token)
-    
+
     elif event.message.test == "ヘルプ":
-        print("使い方：{}出力拡張子：{}")
+        try:
+            print("使い方：{}出力拡張子：{}")
+        except:print("だめやん")
+            
+
     
 def text_save_id(work):
     s = work
