@@ -93,6 +93,7 @@ def handle_message(event):
     elif event.message.test == "ヘルプ":
         try:
             print("使い方：{}出力拡張子：{}")
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="使い方：{}出力拡張子：{}"))
         except:print("だめやん")
             
 
