@@ -23,10 +23,10 @@ def handle_send_message(event,relpy):
     print("reply:{}".format(reply))
     
     message = []
-    message = ImageSendMessage(
+    message.append(ImageSendMessage(
         original_content_url=main.FQDN + "/static/" + event + "_face.jpg",
         preview_image_url=main.FQDN + "/static/" + event + "_face.jpg"
-        )
+        ))
     message.append(TextSendMessage(text="加工終了"))
     print("message:{}".format(message))
     main.line_bot_api.reply_message(reply, message)
