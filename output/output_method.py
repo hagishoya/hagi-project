@@ -28,6 +28,7 @@ def handle_send_message(event,relpy):
         preview_image_url=main.FQDN + "/static/" + event + "_face.jpg"
         )
     message = TextSendMessage(text="加工終了")
+    print("message:{}".format(message))
     main.line_bot_api.reply_message(reply, message)
     #     )
     # if result:
