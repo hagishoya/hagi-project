@@ -22,12 +22,20 @@ def handle_send_message(event,relpy):
     print("event:{}".format(event))
     print("reply:{}".format(reply))
     
-    if result:
-        main.line_bot_api.reply_message(reply, ImageSendMessage(
-            original_content_url=main.FQDN + "/static/" + event + "_face.jpg",
-            preview_image_url=main.FQDN + "/static/" + event + "_face.jpg"
-        ),TextSendMessage(text="加工終了")
+    message = {}
+    message = ImageSendMessage(
+        original_content_url=main.FQDN + "/static/" + event + "_face.jpg",
+        preview_image_url=main.FQDN + "/static/" + event + "_face.jpg"
         )
+    message = TextSendMessage(text="加工終了")
+    main.line_bot_api.reply_message(reply, message)
+    #     )
+    # if result:
+    #     main.line_bot_api.reply_message(reply, ImageSendMessage(
+    #         original_content_url=main.FQDN + "/static/" + event + "_face.jpg",
+    #         preview_image_url=main.FQDN + "/static/" + event + "_face.jpg"
+    #     )
+    #     )
     
      #else:
      # handle_textmessage(event)
@@ -42,7 +50,7 @@ def handle_send_message2(event,reply):
         reply, ImageSendMessage(
             original_content_url=main.FQDN + "/static/" + event + "_face.jpg",
             preview_image_url=main.FQDN + "/static/" + event + "_face.jpg",
-        ),TextSendMessage(text="加工終了")
+        )
         )
     # else:
     #     handle_textmessage(event)
