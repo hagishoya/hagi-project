@@ -42,7 +42,7 @@ def handle_send_message2(event,reply):
         reply, ImageSendMessage(
             original_content_url=main.FQDN + "/static/" + event + "_face.jpg",
             preview_image_url=main.FQDN + "/static/" + event + "_face.jpg",
-        ),TextSendMessage(text="加工終了")
+        )#,TextSendMessage(text="加工終了")
         )
     # else:
     #     handle_textmessage(event)
