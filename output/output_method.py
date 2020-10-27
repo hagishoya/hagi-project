@@ -22,7 +22,7 @@ def handle_send_message(event,relpy):
     print("event:{}".format(event))
     print("reply:{}".format(reply))
     
-    message = {}
+    message = []
     message = ImageSendMessage(
         original_content_url=main.FQDN + "/static/" + event + "_face.jpg",
         preview_image_url=main.FQDN + "/static/" + event + "_face.jpg"
