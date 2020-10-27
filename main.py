@@ -90,7 +90,7 @@ def handle_message(event):
         #line_bot_api.reply_message(event.reply_token,[TextSendMessage(text="ドット絵風に変更しています..."),])
         output_method.handle_send_message4(work,event.reply_token)
 
-    elif event.message.test == "ヘルプ":
+    elif event.message.text == "ヘルプ":
         try:
             print("使い方：{}出力拡張子：{}")
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="使い方：{}出力拡張子：{}"))
